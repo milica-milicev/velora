@@ -15,11 +15,8 @@
 }
 
 .banner--sm {
-    min-height: 50px;
-
-    @include mq($md + 1, min) {
-        min-height: 70px;
-    }
+    min-height: 60px;
+    background-color: $grey;
 }
 
 .banner__title {

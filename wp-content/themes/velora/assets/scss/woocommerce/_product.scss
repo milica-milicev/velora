@@ -42,7 +42,7 @@
 	top: 10px;
 	right: 20px;
 	padding: 5px 12px;
-	border-radius: 10px;
+	border-radius: 4px;
 	color: $white;
 	font-weight: bold;
 	font-size: 12px;
@@ -112,12 +112,13 @@
 .product__gallery-main-thumbs-img,
 .product__gallery-main-img {
     img {
-        width: auto;
+        width: 100%;
+		max-width: 670px;
 		// margin: 0 auto;
 		// max-height: 400px;
 		object-fit: contain;
     	object-position: center;
-		border-radius: 10px;
+		border-radius: 4px;
     	overflow: hidden;
     }
 
