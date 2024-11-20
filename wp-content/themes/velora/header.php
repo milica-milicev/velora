@@ -22,18 +22,16 @@
 </head>
 
 <body <?php body_class(); ?>>
-
-<div id="page" class="site">
+<?php 
+	$clear_header_class = "";
+	if ( is_front_page() ) : 
+		$clear_header_class = "site--header-clear";
+	endif; 
+?>
+<div id="page" class="site <?php echo $clear_header_class; ?>">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'nm_theme' ); ?></a>
 
-	<?php 
-		$clear_header_class = "";
-		if ( is_front_page() ) : 
-			$clear_header_class = "site-header__clear";
-		endif; 
-	?>
-
-	<header id="masthead" class="site-header <?php echo $clear_header_class; ?>">
+	<header id="masthead" class="site-header">
 		<div class="container">
 			<div class="site-header__container">
 				<nav id="site-navigation" class="main-navigation__menu-wrap js-navigation">

@@ -43,3 +43,11 @@ html {
         padding-top: 76px;
     }
 }
+
+.site--header-clear {
+    padding-top: 0;
+
+    @include mq($lg) {
+        padding-top: 0;
+    }
+}
