@@ -1,0 +1,50 @@
+.blog {
+    padding: 50px 0;
+}
+
+.blog__wrap {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -5px;
+
+    @include mq($md + 1, min) {
+        margin: 0 -10px;
+    }
+}
+
+.blog__item {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 0 5px;
+    margin-bottom: 40px;
+
+    @include mq($md + 1, min) {
+        flex: 0 0 33.333%;
+        max-width: 33.333%;
+        padding: 0 10px;
+        margin-bottom: 60px;
+    }
+}
+
+.blog__nav {
+    flex-basis: 100%;
+    text-align: center;
+
+    span {
+        font-weight: 800;
+    }
+
+    span,
+    a {
+        margin: 0 5px;
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 1.1px;
+    }
+
+    a {
+        @include hover {
+            font-weight: 800;
+        }
+    }
+}

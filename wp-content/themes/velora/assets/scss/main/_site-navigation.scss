@@ -1,0 +1,173 @@
+/*--------------------------------------------------------------
+## Navigation
+--------------------------------------------------------------*/
+a {
+	text-decoration: none;
+
+	&:hover,
+	&:focus,
+	&:active {
+		text-decoration: none;
+		outline: 0;
+	}
+}
+
+.site-header__navigation-toggle {
+	position: relative;
+	z-index: 1;
+	width: 24px;
+  	height: 20px;
+	border: none;
+	background-color: transparent;
+	display: block;
+	padding: 0;
+
+	@include mq($lg + 1, min) {
+		display: none;
+	}
+}
+
+.site-header__navigation-toggle-stripe {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 3px;
+	background-color: $white;
+	transition: transform $dur $ease;
+	will-change: transform;
+	transform-origin: left;
+
+	&:nth-child(1) {
+		top: 0;
+	}
+
+	&:nth-child(2) {
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	&:nth-child(3) {
+		top: 100%;
+		margin-top: -3px;
+	}
+
+	.is-active & {
+		background-color: $black;
+
+		&:nth-child(1) {
+			transform: rotate(45deg);
+		}
+
+		&:nth-child(2) {
+			display: none;
+		}
+
+		&:nth-child(3) {
+			transform: rotate(-45deg);
+		}
+	}
+
+	.is-sticky & {
+		background-color: $black;
+	}
+}
+
+.main-navigation__menu-wrap {
+	@include mq($lg) {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: $white;
+		opacity: 0;
+		visibility: hidden;
+		transition: transform $dur $ease, opacity $dur $dur $ease, visibility $dur $dur $ease;
+		transform: translateX(-100%);
+		will-change: transform;
+		padding: 120px 20px 0;
+
+		&.is-active {
+			opacity: 1;
+			visibility: visible;
+			transform: translateX(0);
+			transition: transform $dur $ease, opacity $dur $ease, visibility $dur $ease;
+		}
+	}
+}
+
+.main-navigation__menu {
+	text-align: center;
+
+	ul {
+		display: flex;
+	}
+
+	@include mq($lg + 1, min) {
+		display: flex;
+		align-items: center;
+		text-align: left;
+	}
+}
+
+.main-navigation__menu li {
+	margin-bottom: 25px;
+
+	@include mq($lg + 1, min) {
+		padding-right: 30px;
+		margin-bottom: 0;
+
+		&:last-of-type {
+			padding-right: 0;
+		}
+	}
+
+	@include mq($xl + 1, min) {
+		padding-right: 40px;
+	}
+}
+
+.main-navigation__menu a {
+	font-family: $font-main;
+	font-size: 14px;
+	text-transform: uppercase;
+	letter-spacing: 1.2px;
+	line-height: 1.4;
+	color: $black;
+	transition: color $dur $ease;
+	position: relative;
+	display: inline-block;
+
+	/* Add an underline animation to the navigation links */
+	&::after {
+		content: '';
+		transform: scaleX(0);
+		transform-origin: left;
+		will-change: transform;
+		display: block;
+		height: 1px;
+		background-color: $black;
+		transition: transform $dur*1.3 $ease;
+	}
+
+	@include hover {
+		&::after {
+			transform: scaleX(1);
+		}
+	}
+
+	@include mq($xl) {
+		font-size: 12px;
+	}
+
+	@include mq($lg) {
+		color: $black;
+		font-size: 14px;
+	}
+}
+
+.main-navigation__menu li.current-menu-item a {
+	&::after {
+		transform: scaleX(1);
+	}
+}

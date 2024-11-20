@@ -1,0 +1,114 @@
+/*--------------------------------------------------------------
+## Mixins
+--------------------------------------------------------------*/
+
+/*
+Media Query
+Example:
+
+@include mq($sm) 			 		Will render: @media screen and (max-width: 575px)
+@include mq(991px) 			 	 	Will render: @media screen and (max-width: 991px)
+@include mq($sm + 1, min) 	 		Will render: @media screen and (min-width: 576px)
+@include mq(992px, min) 			Will render: @media screen and (min-width: 992px)
+@include mq(400, min, height) 	 	Will render: @media screen and (min-height: 400px)
+@include mq(992px) {				Will render: @media screen and (max-width: 992px) and (min-width: 767px)
+	@include mq(767px, min) {
+
+	}
+}
+ */
+@mixin mq($value, $constraint: max, $feature: width) {
+	@media screen and (#{$constraint}-#{$feature}: $value) {
+		@content;
+	}
+}
+
+// Clearfix
+@mixin clearfix() {
+	&::after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+}
+
+// Text Overflow
+@mixin text-overflow {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+// Font Smoothing
+@mixin font-smoothing($val: antialiased) {
+	-webkit-font-smoothing: $val;
+	-moz-font-smoothing: $val;
+	-ms-font-smoothing: $val;
+	-o-font-smoothing: $val;
+}
+
+// Input Placeholder
+@mixin placeholder {
+	&::-webkit-input-placeholder {
+		@content;
+	}
+
+	&::-moz-placeholder {
+		@content;
+	}
+
+	&::-moz-placeholder {
+		@content;
+	}
+
+	&::-ms-input-placeholder {
+		@content;
+	}
+}
+
+// Hover mixin only for desktop devices
+// to include use @include hover {your hover styles} can also include elements
+@mixin hover {
+	@media only screen and (min-width: $xl) {
+		&:hover {
+			@content;
+		}
+	}
+}
+
+
+
+// Calculator for aspect ratio padding percentage
+// Example:
+// @include aspect-ratio(787, 556);
+// Example for media query:
+// @include aspect-ratio(328, 260, $md);
+@mixin aspect-ratio($width, $height, $breakpoint: 'all-devices') {
+	@if ($breakpoint == 'all-devices') {
+		&::before {
+			padding-top: calc($height / $width) * 100%;
+		}
+	} @else {
+		@include mq($breakpoint) {
+			&::before {
+				padding-top: calc($height / $width) * 100%;
+			}
+		}
+	}
+	@if ($width != 1) {
+		max-width: $width + px;
+	}
+}
+
+// Mixin that generates a font-size property using the clamp function
+// Example:
+// h1 {
+//   @include clamp-font-size(28, 48);
+// }
+@mixin clamp-font-size($min, $max, $vw-min: 320, $vw-max: 1920) {
+	$min: calc($min / 16);
+	$max: calc($max / 16);
+	$vw-min: calc($vw-min / 16);
+	$vw-max: calc($vw-max / 16);
+	font-size: clamp(#{$min}rem, #{$min}rem + (#{$max} - #{$min}) * ((100vw - #{$vw-min}rem) / (#{$vw-max} - #{$vw-min})), #{$max}rem);
+}

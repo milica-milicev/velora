@@ -1,0 +1,43 @@
+.post-item__img {
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 80%;
+    display: block;
+    width: 100%;
+    margin-bottom: 24px;
+
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease-in-out;
+        transform: scale(1);
+        will-change: transform;
+        backface-visibility: hidden;
+    }
+
+    @include hover {
+        img {
+            transform: scale(1.03);
+        }
+    }
+
+    @include mq($md) {
+        margin-bottom: 15px;
+    }
+}
+
+.post-item__title {
+    @include clamp-font-size(14, 16);
+    line-height: 1.5;
+    margin-bottom: 8px;
+    font-weight: 800;
+}
+
+.post-item__excerpt {
+    color: rgba($black, 0.8);
+}

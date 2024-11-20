@@ -1,0 +1,69 @@
+/*--------------------------------------------------------------
+## Cover Image
+--------------------------------------------------------------*/
+// For cover image, parent element must have position rule and overflow set to hidden
+.cover-img {
+	min-width: 1000%;
+	min-height: 1000%;
+	max-width: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0.1001);
+	transition: $dur $ease;
+}
+
+/*--------------------------------------------------------------
+## Wrapper and Ratios
+--------------------------------------------------------------*/
+.media-wrap {
+	position: relative;
+	overflow: hidden;
+
+	&::before {
+		content: '';
+		display: block;
+		width: 100%;
+	}
+}
+
+// modifier size classes
+// formula for calculating padding percentage:
+// (height / width * 100) = padding-top: %;
+.media-wrap--square::before {
+	padding-top: 100%;
+}
+
+.media-wrap--400x280::before {
+	padding-top: 70%;
+}
+
+// item
+.media-item {
+	display: block;
+}
+
+/*--------------------------------------------------------------
+## SVG Icons
+--------------------------------------------------------------*/
+.svg-icon {
+	display: inline-flex;
+	line-height: 1;
+
+	svg {
+		width: 1em;
+	}
+}
+
+/* Make sure embeds and iframes fit their containers. */
+embed,
+iframe,
+object {
+	max-width: 100%;
+}
+
+img {
+	max-width: 100%;
+	display: block;
+	height: initial;
+}

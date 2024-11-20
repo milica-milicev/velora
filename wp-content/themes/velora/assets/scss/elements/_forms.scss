@@ -1,0 +1,167 @@
+/*--------------------------------------------------------------
+## Forms
+--------------------------------------------------------------*/
+label {
+    font-size: 0.875rem;
+    font-family: $font-main;
+	display: block;
+    margin-bottom: 10px;
+	position: relative;
+	padding-bottom: 15px;
+
+	span {
+		display: block;
+	}
+
+	.required {
+		color: $black;
+		display: inline-block;
+	}
+}
+
+input[type='text'],
+input[type='email'],
+input[type='url'],
+input[type='password'],
+input[type='search'],
+input[type='number'],
+input[type='tel'],
+input[type='range'],
+input[type='date'],
+input[type='month'],
+input[type='week'],
+input[type='time'],
+input[type='datetime'],
+input[type='datetime-local'],
+input[type='color'],
+textarea {
+	width: 100%;
+    border: 2px solid transparent;
+    margin-top: 2px;
+    transition: $dur $ease;
+    padding: 15px 21px;
+	background-color: $grey-light;
+	margin-bottom: 20px;
+	border-radius: 4px;
+
+	&:focus,
+	&:active {
+		border: 2px solid $black;
+	}
+
+	&:invalid {
+		border: 2px solid #dc3232;
+	}
+}
+
+textarea {
+	height: 150px;
+	resize: none;
+	width: 100%;
+}
+
+.wpcf7-not-valid-tip {
+	font-size: 0.8125rem;
+    font-family: $font-main;
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 100%;
+}
+
+.wpcf7 form.invalid .wpcf7-response-output,
+.wpcf7 form.unaccepted .wpcf7-response-output,
+.wpcf7 form.payment-required .wpcf7-response-output,
+.wpcf7 form.failed .wpcf7-response-output,
+.wpcf7 form.aborted .wpcf7-response-output {
+	border: none;
+	color: $black;
+	font-size: 0.875rem;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 100%;
+}
+
+.wpcf7-spinner {
+	border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    border: 3px solid $white;
+    border-left: 3px solid $black;
+    animation: load 1.1s infinite linear;
+    background-color: transparent;
+    opacity: 1;
+    margin: 0;
+	will-change: transform;
+
+	&::before {
+		content: none;
+	}
+}
+
+@keyframes load {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/*--------------------------------------------------------------
+## CF7 Plugin Form
+--------------------------------------------------------------*/
+// Form thank you example
+.cf7-holder { // wrapper that holding form and thank you message popup
+	position: relative;
+
+	> * {
+		position: relative;
+		z-index: 0;
+	}
+
+	.wpcf7 {
+		opacity: 1;
+		transition: $dur $ease;
+	}
+
+	&.form-is-sent {
+		.wpcf7 {
+			opacity: 0;
+		}
+	}
+
+	.wpcf7-mail-sent-ok {
+		display: none !important; //sass-lint:disable-line no-important
+	}
+}
+
+
+//CF7 POPUP
+.cf7-holder__popup {
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	transition: $dur $ease;
+	width: 100%;
+	height: 100vh;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: rgba($black, .5);
+	z-index: 1000;
+	backface-visibility: hidden;
+	will-change: transform;
+
+	&.is-active {
+		opacity: 1;
+		visibility: visible;
+		pointer-events: all;
+	}
+}

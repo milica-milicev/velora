@@ -1,0 +1,32 @@
+// .variations__items {
+//     display: flex;
+//     flex-wrap: wrap;
+//     margin: 20px 0;
+// }
+
+// .variations__item {
+//     padding: 10px 20px;
+//     box-shadow: 0 0 0 1px $grey inset;
+//     border-radius: 4px;
+//     cursor: pointer;
+//     transition: $dur $ease;
+//     border: none;
+//     background-color: $white;
+//     margin-right: 15px;
+    
+//     @include hover {
+//         box-shadow: 0 0 0 1px $black inset;
+//     }
+
+//     &.selected {
+//         box-shadow: 0 0 0 2px $black inset;
+//     }
+
+//     &.disabled {
+//         text-decoration: line-through;
+//         color: $snow;
+//         cursor: not-allowed;
+//         background-color: $white-smoke;
+//         pointer-events: none;
+//     }
+// }

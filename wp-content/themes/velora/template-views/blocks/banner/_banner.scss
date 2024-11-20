@@ -1,0 +1,94 @@
+.banner {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    min-height: 180px;
+    background-color: $black;
+
+    @include mq($md + 1, min) {
+        min-height: 240px;
+        margin-bottom: 40px;
+    }
+}
+
+.banner--sm {
+    min-height: 50px;
+
+    @include mq($md + 1, min) {
+        min-height: 70px;
+    }
+}
+
+.banner__title {
+    text-transform: uppercase;
+    @include clamp-font-size(28, 48);
+    color: $white;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.125;
+}
+
+/////////////////Banner-single/////////////////////
+
+// .banner-single {
+//     margin-top: 160px;
+
+//     @include mq($md) {
+//         margin-top: 100px;
+//     }
+// }
+
+.banner-single-content {
+    max-width: 1000px;
+    margin: 40px auto;
+
+
+    @include mq($md) {
+        margin: 20px auto;
+        text-align: left;
+    }
+}
+
+.banner-single-conten__title {
+    @include clamp-font-size(32, 48);
+    margin-bottom: 20px;
+    font-weight: 600;
+    line-height: 1.18;
+
+    @include mq($md) {
+        text-align: left;
+    }
+}
+
+.banner-single__img {
+    margin-bottom: 40px;
+
+    img {
+        max-height: 800px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    @include mq($md) {
+       margin-bottom: 30px;
+
+       img {
+            min-height: 261px;
+            object-fit: cover;
+       }
+    }
+}
+
+.banner__content-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include mq($md) {
+        display: block;
+        margin-bottom: 17px;
+    }
+}

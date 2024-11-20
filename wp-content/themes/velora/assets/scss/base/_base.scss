@@ -1,0 +1,45 @@
+/*--------------------------------------------------------------
+## Base Layout
+--------------------------------------------------------------*/
+html, body {
+	@include font-smoothing(antialiased);
+	height: 100%;
+	// overflow-x: hidden;
+}
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 1680px;
+    margin: 0 auto;
+    padding: 0 80px;
+
+    @include mq($xl) {
+        padding: 0 25px;
+    }
+
+    @include mq($md) {
+        padding: 0 15px;
+    }
+}
+
+.container--sm {
+    max-width: 1000px;
+}
+
+.site {
+    padding-top: 81px;
+
+    @include mq($lg) {
+        padding-top: 76px;
+    }
+}

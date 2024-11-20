@@ -1,0 +1,122 @@
+/*--------------------------------------------------------------
+## Footer
+--------------------------------------------------------------*/
+.site-footer {
+	background-color: $snow;
+	padding-top: 40px;
+
+    @include mq($md + 1, min) {
+        padding-top: 70px;
+    }
+}
+
+.site-footer__container {
+	padding-bottom: 20px;
+
+	@include mq($xs + 1, min) {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	@include mq($md + 1, min) {
+        padding-bottom: 40px;
+    }
+}
+
+.site-footer__item {
+	padding-bottom: 25px;
+
+	li {
+		margin-bottom: 10px;
+	}
+
+	span,
+	a  {
+		display: block;
+		font-size: 15px;
+	}
+
+	a {
+		@include hover {
+			font-weight: 600;
+		}
+	}
+
+	img {
+		width: 100%;
+		max-width: 100px;
+		margin-bottom: 30px;
+	}
+
+	h2 {
+		margin-bottom: 20px;
+		@include clamp-font-size(16, 18);
+		font-weight: 600;
+		position: relative;
+		padding-bottom: 5px;
+		
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 30px;
+			height: 1px;
+			background-color: $orange;
+		}
+	}
+
+	@include mq($xs + 1, min) {
+        flex: 0 0 50%;
+		max-width: 50%;
+    }
+
+	@include mq($sm + 1, min) {
+        flex: 0 0 33.3%;
+		max-width: 33.3%;
+		padding-bottom: 0;
+
+		img {
+			margin-bottom: 40px;
+		}
+	
+		h2 {
+			margin-bottom: 30px;
+		}
+    }
+}
+
+.site-footer__item-media {
+	display: flex;
+	align-items: center;
+
+	span {
+		font-size: 22px;
+		transition: $dur $ease;
+		display: inline-flex;
+		margin-right: 20px;
+
+		@include hover {
+			opacity: .6;
+		}
+	}
+}
+
+.footer-bottom {
+	padding: 20px 0;
+	border-top: 1px solid rgba($black, 0.1);
+}
+
+.site-footer__copyright {
+	font-family: $font-main;
+	font-size:  14px;
+	line-height: 1.35;
+	color: rgba($black, 0.8);
+	text-align: center;
+
+	a {
+		@include hover {
+			opacity: 0.6;
+		}
+	}
+}

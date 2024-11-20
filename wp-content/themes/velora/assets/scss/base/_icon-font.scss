@@ -1,0 +1,88 @@
+@font-face {
+	font-family: "fonticons";
+	src: url('assets/icons/fonticons.woff2') format('woff2'), url('assets/icons/fonticons.woff') format('woff'), url('assets/icons/fonticons.ttf') format('truetype');;
+}
+
+@mixin font-styles {
+	font-family: "fonticons";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	// speak: none; // only necessary if not using the private unicode range (firstGlyph option)
+	text-decoration: none;
+	text-transform: none;
+}
+
+%font {
+	@include font-styles;
+}
+
+@function font-char($filename) {
+	$char: "";
+
+	@if $filename == cart {
+		$char: "\E001";
+	}
+	@if $filename == chevron-down {
+		$char: "\E002";
+	}
+	@if $filename == chevron-left {
+		$char: "\E003";
+	}
+	@if $filename == chevron-right {
+		$char: "\E004";
+	}
+	@if $filename == facebook {
+		$char: "\E005";
+	}
+	@if $filename == instagram {
+		$char: "\E006";
+	}
+	@if $filename == search {
+		$char: "\E007";
+	}
+	@if $filename == user {
+		$char: "\E008";
+	}
+
+	@return $char;
+}
+
+@mixin font($filename, $insert: before, $extend: true) {
+	&:#{$insert} {
+		@if $extend {
+			@extend %font;
+		} @else {
+			@include font-styles;
+		}
+		content: font-char($filename);
+	}
+}
+
+.font-cart {
+	@include font(cart);
+}
+.font-chevron-down {
+	@include font(chevron-down);
+}
+.font-chevron-left {
+	@include font(chevron-left);
+}
+.font-chevron-right {
+	@include font(chevron-right);
+}
+.font-facebook {
+	@include font(facebook);
+}
+.font-instagram {
+	@include font(instagram);
+}
+.font-search {
+	@include font(search);
+}
+.font-user {
+	@include font(user);
+}
+

@@ -1,0 +1,333 @@
+/*--------------------------------------------------------------
+# Product page
+--------------------------------------------------------------*/
+.product__main {
+    margin-bottom: 20px;
+	max-width: 100%;
+	overflow-x: hidden;
+
+	@include mq($md) {
+		margin-bottom: 15px;
+	}
+}
+
+.product__main-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+	align-items: flex-start;
+
+	@include mq($sm) {
+        display: block;
+		margin: 0;
+	}
+}
+
+.product__main-gallery {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 0 10px;
+	position: relative;
+
+	@include mq($sm) {
+        flex: 0 0 100%;
+		padding: 0;
+		max-width: 100%;
+		margin-bottom: 25px;
+	}
+}
+
+.product__main-gallery .onsale {
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	padding: 5px 12px;
+	border-radius: 10px;
+	color: $white;
+	font-weight: bold;
+	font-size: 12px;
+	text-transform: uppercase;
+	background-color: $orange;
+
+	@include mq($sm) {
+        font-size: 10px;
+		right: 10px;
+    }
+}
+
+.product__gallery-main-slider-wrap {
+    position: relative;
+	margin-bottom: 20px;
+
+	.swiper-button {
+		&-prev,
+		&-next {
+			position: absolute;
+			border-radius: 50%;
+			top: 50%;
+			left: 100%;
+			margin-left: -45px;
+			transform: translateY(50%);
+			height: 40px;
+			width: 40px;
+			color: $white;
+			// background-color: $fire-bush;
+			transition: $dur $ease;
+
+			@include hover {
+				background-color: $black;
+			}
+
+			&::after {
+				font-size: 12px;
+			}
+
+			&.swiper-button-disabled {
+				pointer-events: auto;
+			}
+		}
+
+		&-prev {
+			left: 0;
+			margin-left: 5px;
+		}
+	}
+}
+
+.single_add_to_cart_button {
+	padding: 20px 60px;
+	border: 0;
+	margin-bottom: 40px;
+	@include clamp-font-size(16, 18);
+	text-transform: uppercase;
+	border-radius: 50px;
+	background-color: $blue;
+	color: $white;
+
+	@include mq($md) {
+		padding: 20px 30px;
+	}
+}
+
+.product__gallery-main-slider,
+.product__gallery-main-img {
+	cursor: zoom-in;
+}
+
+.product__gallery-main-slider-img,
+.product__gallery-main-thumbs-img,
+.product__gallery-main-img {
+    img {
+        width: auto;
+		// margin: 0 auto;
+		// max-height: 400px;
+		object-fit: contain;
+    	object-position: center;
+		border-radius: 10px;
+    	overflow: hidden;
+    }
+
+	@include mq($sm) {
+        img {
+			width: 100%;
+			max-height: 300px;
+		}
+    }
+}
+
+.product__gallery-main-img {
+	@include mq($md) {
+		img {
+			max-height: 520px;
+			object-fit: cover;
+		}
+	}
+}
+
+.product__gallery-main-thumbs {
+	overflow: hidden;
+}
+
+.product__gallery-main-thumbs-img {
+	opacity: 0.7;
+	cursor: pointer;
+	transition: $dur $ease;
+
+	@include hover {
+		opacity: 1;
+	}
+
+	&.swiper-slide-thumb-active {
+		opacity: 1;
+	}
+}
+
+.product__main-summary {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 0 10px;
+
+	@include mq($sm) {
+        flex: 0 0 100%;
+		max-width: 100%;
+		padding: 0;
+	}
+}
+
+.product__title {
+	@include clamp-font-size(18, 30);
+	font-weight: bold;
+	margin-bottom: 17px;
+	text-transform: uppercase;
+	letter-spacing: -0.75px;
+}
+
+.product__price {
+	margin-bottom: 20px;
+
+	span {
+		@include clamp-font-size(16, 28);
+		font-weight: bold;
+	}
+
+	.woocommerce-Price-currencySymbol {
+		font-weight: inherit;
+		font-size: inherit;
+	}
+
+	@include mq($md) {
+		margin-bottom: 10px;
+	}
+}
+
+.product__meta-item {
+	display: block;
+	margin-bottom: 6px;
+
+	a {
+		color: $orange;
+		text-decoration: underline;
+		transition: $dur $ease;
+
+		@include hover {
+			color: $black;
+		}
+	}
+
+	@include mq($md) {
+		font-size: 13px;
+
+		a {
+			font-size: 13px;
+		}
+	}
+}
+
+.product__main-content {
+	padding: 30px 0 45px;
+
+	@include mq($sm) {
+        padding: 15px 0 20px;
+	}
+}
+
+.product__main-content-title {
+	// color: $grey;
+	@include clamp-font-size(14, 16);
+    text-transform: uppercase;
+    border: 1px solid $white-smoke;
+    padding: 10px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.product__main-content-wrap {
+	max-width: 1000px;
+}
+
+
+/* Osnovni stil za modalni prozor */
+.product__gallery-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($black, 0.8);
+    z-index: 1050;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden; /* Skriven po defaultu, menjajte u "visible" da prikažete */
+    opacity: 0;
+    transition: $dur $ease;
+
+	&.is-visible {
+		visibility: visible;
+		opacity: 1;
+	}
+}
+
+/* Kontejner unutar modalnog prozora za sadržaj */
+.product__gallery-modal-inner {
+    position: relative;
+    margin: auto;
+    max-height: 80%; /* Maksimalna visina sadržaja */
+    overflow: hidden; /* Sakriva prekoračeni sadržaj */
+
+	.swiper-button {
+		&-prev,
+		&-next {
+			position: absolute;
+			border-radius: 50%;
+			top: 50%;
+			left: 100%;
+			margin-left: -50px;
+			transform: translateY(50%);
+			height: 40px;
+			width: 40px;
+			color: $white;
+			background-color: rgba($black, 0.4);
+			transition: $dur $ease;
+
+			@include hover {
+				background-color: $black;
+			}
+
+			&::after {
+				font-size: 18px;
+			}
+		}
+
+		&-prev {
+			left: 0;
+			margin-left: 10px;
+		}
+	}
+}
+
+.product__gallery-modal-slider-img {
+	img {
+		margin: 0 auto;
+	}
+}
+
+.product__gallery-modal-close-btn {
+	position: absolute;
+	top: 0;
+	right: 0;
+	color: $white;
+	width: 50px;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba($black, 0.8);
+	font-size: 20px;
+	transition: $dur $ease;
+	cursor: pointer;
+
+	@include hover {
+		background-color: rgba($white, 0.05);
+	}
+}

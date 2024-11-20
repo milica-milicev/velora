@@ -1,0 +1,63 @@
+/*--------------------------------------------------------------
+# Woocommerce fields
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Woocommerce Qty counter
+--------------------------------------------------------------*/
+// sass-lint:disable no-vendor-prefixes
+/* Chrome, Safari, Edge, Opera */
+.quantity__field::-webkit-outer-spin-button,
+.quantity__field::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.quantity__field[type='number'] {
+    -moz-appearance: textfield;
+}
+// sass-lint:enable no-vendor-prefixes
+
+.quantity {
+    border-radius: 4px;
+    box-sizing: content-box;
+    display: flex;
+    position: relative;
+    width: 107px;
+    border: 1px solid $white-smoke;
+    margin-bottom: 40px;
+}
+
+.quantity__field.qty.text {
+    font-weight: 600;
+    margin: 0;
+    padding: 7px 0;
+    text-align: center;
+    color: $black;
+}
+
+.quantity__minus,
+.quantity__plus {
+    border: 0;
+    cursor: pointer;
+    font-size: 16px;
+    min-width: 30px;
+    opacity: 0.8;
+    padding: 0;
+
+    @include hover {
+        background-color: $white-smoke;
+    }
+}
+
+.quantity__minus {
+    border-radius: 4px 0 0 4px;
+}
+
+.quantity__plus {
+    border-radius: 0 4px 4px 0;
+}
+
+
+

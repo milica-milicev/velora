@@ -1,0 +1,100 @@
+.categories:not(.categories--listing) {
+    padding: 20px 0;
+
+    @include mq($md + 1, min) {
+        padding: 40px 0;
+    }
+}
+
+.categories__row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -5px;
+
+    @include mq($md + 1, min) {
+        margin: 0 -10px;
+    }
+}
+
+.categories__item {
+    margin-bottom: 10px;
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 0 5px;
+
+    &:nth-last-child(-n + 2) {
+        margin-bottom: 0;
+    }
+
+    @include mq($md + 1, min) {
+        flex: 0 0 25%;
+        max-width: 25%;
+        margin-bottom: 0;
+        padding: 0 10px;
+
+        .categories--listing & {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.categories__item a {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease-in-out; // Glađa tranzicija za celokupan item
+    border-radius: 4px;
+    padding-bottom: 125%;
+    display: block;
+
+    span {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        max-width: 100%;
+        padding: 15px;
+        color: $white;
+        @include clamp-font-size(17, 23);
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease-in-out; // Dodaj tranziciju za sliku
+        transform: scale(1);
+        will-change: transform;
+        backface-visibility: hidden;
+    }
+
+    .categories--listing & {
+        padding-bottom: 50%;
+    }
+
+    @include hover {
+        img {
+            transform: scale(1.03); // Zoom-in efekat na slici
+        }
+    }
+
+    @include mq($md + 1, min) {
+        span {
+            padding: 20px;
+        }
+    }
+
+    @include mq($xl + 1, min) {
+        span {
+            padding: 32px;
+        }
+    }
+}
+
+.categories__item--soon {
+    opacity: 0.4;
+    pointer-events: none;
+}

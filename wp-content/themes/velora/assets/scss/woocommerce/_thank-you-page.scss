@@ -1,0 +1,142 @@
+/*--------------------------------------------------------------
+# Woocommerce cart page
+--------------------------------------------------------------*/
+.order-details {
+    max-width: 600px;
+    margin: 0 auto 45px;
+    padding: 0 15px;
+}
+
+.order-details__main-title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.order-details__products-info {
+    background-color: $white-smoke;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.order-details__main-info {
+    margin-bottom: 20px;
+    text-align: center;
+
+    .woocommerce-notice {
+        font-weight: bold;
+        @include clamp-font-size(16, 30);
+        margin-bottom: 20px;
+    }
+}
+
+.order-details__title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.order-details__main-info-list {
+    li {
+        margin-bottom: 6px;
+    }
+}
+
+.order-details__products {
+    margin-bottom: 20px;
+}
+
+.order-details__products-table {
+    width: 100%;
+}
+
+.order-details__products-table th,
+.order-details__totals-title {
+    padding: 5px 10px 5px 0;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: $black;
+    text-align: left;
+    border-bottom: 1px solid $black;
+    font-weight: bold;
+}
+
+.order-details__totals-title,
+.order-details__products-table .order-details__header-subtotal {
+    text-align: right;
+    padding: 5px 0 5px 10px;
+}
+
+.order-details__item {
+    border-bottom: 1px solid $black;
+
+    td {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        vertical-align: middle;
+        font-size: 14px;
+    }
+
+    &:last-of-type {
+        border-bottom: none;
+    }
+
+    .shipped_via {
+        display: none;
+    }
+}
+
+.order-details__item--note {
+	td {
+		vertical-align: top;
+	}
+}
+
+.order-details__item--note-text {
+	padding-left: 10px;
+}
+
+.order-details__thumbnail {
+    padding-right: 10px;
+    width: 40px;
+
+    a {
+        display: inline-block;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    img {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+    }
+}
+
+.order-details__product {
+    padding-right: 10px;
+}
+
+.order-details__product-name {
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.order-details__product-price {
+    margin-bottom: 7px;
+}
+
+.order-details__total {
+    text-align: right;
+}
+
+.order-details__total-price {
+    text-align: right;
+    font-weight: bold;
+}
+
+.order-details__footer {
+    text-align: center;
+}

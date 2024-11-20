@@ -1,0 +1,176 @@
+/*--------------------------------------------------------------
+## Typography
+--------------------------------------------------------------*/
+body,
+button,
+input,
+select,
+optgroup,
+textarea {
+	font-family: $font-main;
+	color: $black;
+	font-size: 16px;
+	line-height: 1.5;
+	letter-spacing: -0.5px;
+}
+
+pre {
+	background: #ededed;
+	max-width: 100%;
+	overflow: auto;
+	padding: 1.6em;
+	font-size: 12px;
+	margin-bottom: 30px;
+}
+
+.section-title {
+	color: $black;
+	line-height: 1.45;
+	font-weight: 800;
+	letter-spacing: -0.9px;
+	text-transform: uppercase;
+	@include clamp-font-size(20, 35);
+	margin-bottom: 20px;
+}
+
+.section-title--center {
+	text-align: center;
+}
+
+.section-descr {
+	margin-bottom: 25px;
+	color: rgba($black, 0.8);
+}
+
+/*--------------------------------------------------------------
+## Entry Content
+--------------------------------------------------------------*/
+.entry-content {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		// font-family: $font-second;
+		color: $black;
+		line-height: 1.45;
+		font-weight: 700;
+	}
+
+	h1 {
+		@include clamp-font-size(33, 64);
+		margin-bottom: clamp(1.25rem, 1rem + 1.25vw, 2rem);
+	}
+
+	h2 {
+		@include clamp-font-size(24, 40);
+		margin-bottom: clamp(1.25rem, 1.0625rem + 0.9375vw, 2rem);
+	}
+
+	h3,
+	h4,
+	h5,
+	h6 {
+		@include clamp-font-size(16, 24);
+		margin-bottom: clamp(1.25rem, 1.125rem + 0.625vw, 2rem);
+	}
+
+	p {
+		@include clamp-font-size(14, 16);
+		font-family: $font-main;
+		color: $black;
+		margin-bottom: 10px;
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+
+	blockquote {
+		border-left: 2px solid $black;
+		padding-left: 27px;
+		position: relative;
+		margin-bottom: clamp(1rem, 1.125rem + 0.625vw, 1.5rem);
+
+		&::before {
+			content: '“';
+			// font-family: $font-second;
+			font-size: 150px;
+			line-height: 0.6;
+			color: $black;
+			position: absolute;
+			left: 10px;
+			top: 0;
+		}
+
+		p {
+			font-family: $font-main;
+			color: $black;
+			font-style: italic;
+			@include clamp-font-size(16, 22);
+			line-height: 1.63;
+			position: relative;
+		}
+
+		@include mq($md) {
+			padding-left: 15px;
+		}
+	}
+
+	li {
+		position: relative;
+		@include clamp-font-size(14, 16);
+		color: $black;
+		font-family: $font-main;
+		padding-left: 15px;
+
+		&::before {
+			content: '';
+			background-color: $black;
+			display: block;
+			width: 6px;
+			height: 6px;
+			border-radius: 50%;
+			position: absolute;
+			top: 10px;
+			left: 0;
+		}
+	}
+
+	ul,
+	ol {
+		li {
+			margin-bottom: 6px;
+
+			&:last-of-type {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	ol {
+		margin-left: 17px;
+
+		li {
+			list-style: decimal;
+
+			&::before {
+				display: none;
+			}
+		}
+	}
+
+	a {
+		@include clamp-font-size(14, 16);
+		$font-family: $font-main;
+		transition: $dur $ease;
+		color: $black;
+		text-decoration: underline;
+
+		@include hover {
+			color: $black;
+			text-decoration: underline;
+		}
+	}
+}

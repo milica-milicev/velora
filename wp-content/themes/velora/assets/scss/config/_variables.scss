@@ -1,0 +1,50 @@
+/*--------------------------------------------------------------
+## Main Variables
+--------------------------------------------------------------*/
+// Fonts
+
+$font-main: 'Inter 18pt', serif;
+// $font-second: $font-default-serif;
+
+$site-fonts: (
+	'font-main': $font-main,
+	// 'font-second': $font-second,
+) !default;
+
+// Colors
+$white: #fff;
+$black: #1b1f24;
+$orange: #ff5700;
+$slate-blue: #6366f1;
+$snow: #f9f9f9;
+$white-smoke: #f0f0f0;
+$grey-light: #eaeaea;
+$blue: #0086d6;
+$grey: #f2f2f2;
+
+$site-colors: (
+	'white': $white,
+	'black': $black,
+	'orange': $orange,
+	'slate-blue': $slate-blue,
+	'snow': $snow,
+	'white-smoke': $white-smoke,
+	'blue': $blue,
+	'grey': $grey,
+) !default;
+
+// Transitions
+$dur: 350ms;
+$ease: ease;
+
+/*--------------------------------------------------------------
+## Breakpoint Variables
+--------------------------------------------------------------*/
+$xs: 400px;
+$smx: 500px;
+$sm: 575px;
+$md: 767px;
+$lg: 991px;
+$xl: 1199px;
+$xxl: 1399px;
+$xxxl: 1699px;

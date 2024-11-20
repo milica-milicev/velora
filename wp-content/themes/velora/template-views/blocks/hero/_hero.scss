@@ -1,0 +1,51 @@
+.hero {
+    background-color: $black;
+    height: 100vh;
+    max-height: 880px;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 20px;
+
+    @include mq($md + 1, min) {
+        margin-bottom: 40px;
+    }
+}
+
+.hero__image {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+    }
+}
+
+.hero__content {
+    max-width: 50%;
+}
+
+.hero__title {
+    @include clamp-font-size(32, 64);
+    margin-bottom: 25px;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.125;
+    letter-spacing: -1.5px;
+    color: $white;
+}
+
+.hero__text {
+    @include clamp-font-size(13, 18);
+    margin-bottom: 30px;
+    color: $white;
+}
+

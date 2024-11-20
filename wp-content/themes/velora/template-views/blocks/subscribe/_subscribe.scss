@@ -1,0 +1,105 @@
+.subscribe {
+    padding: 20px 0 40px;
+
+    @include mq($md + 1, min) {
+        padding: 40px 0 80px;
+    }
+}
+
+.subscribe__container {
+    background-color: $snow;
+    border-radius: 4px;
+    overflow: hidden;
+    
+    @include mq($md + 1, min) {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+.subscribe__col {
+    @include mq($md + 1, min) {
+        flex: 0 0 50%;
+        max-width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+.subscribe__img-wrap {
+    position: relative;
+    padding-bottom: 50%;
+    height: 100%;
+
+    img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    @include mq($md + 1, min) {
+        padding-bottom: 70%;
+    }
+}
+
+.subscribe__content {
+    padding: 30px 15px;
+
+    @include mq($md + 1, min) {
+        padding: 30px 40px;
+    }
+
+    @include mq($lg + 1, min) {
+        padding: 40px 60px;
+    }
+}
+
+.subscribe__form {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    @include mq($lg) {				
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    @include mq($md) {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    @include mq($sm) {
+        flex-direction: column;
+        align-items: flex-end;
+    }    
+}
+
+.subscribe__form-field {
+    flex: 1;
+    width: 100%;
+    padding-right: 10px;
+}
+
+.subscribe__form-input {
+    margin-bottom: 0;
+}
+
+.subscribe__form-button {
+    @include mq($lg) {				
+        width: 100%;
+    }
+
+    @include mq($md) {
+        width: auto;
+    }
+
+    @include mq($sm) {
+        width: 100%;
+    }   
+}
