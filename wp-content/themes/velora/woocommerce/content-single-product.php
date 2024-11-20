@@ -61,6 +61,7 @@ global $product;
 
 					<div class="product__main-summary">
 						<?php
+						remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
 						/**
 						 * Hook: woocommerce_single_product_summary.
 						 *

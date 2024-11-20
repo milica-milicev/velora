@@ -195,29 +195,6 @@
 	}
 }
 
-.product__meta-item {
-	display: block;
-	margin-bottom: 6px;
-
-	a {
-		color: $orange;
-		text-decoration: underline;
-		transition: $dur $ease;
-
-		@include hover {
-			color: $black;
-		}
-	}
-
-	@include mq($md) {
-		font-size: 13px;
-
-		a {
-			font-size: 13px;
-		}
-	}
-}
-
 .product__main-content {
 	padding: 30px 0 45px;
 
@@ -238,6 +215,10 @@
 
 .product__main-content-wrap {
 	max-width: 1000px;
+}
+
+.product__short-description {
+	margin: 30px 0;
 }
 
 
