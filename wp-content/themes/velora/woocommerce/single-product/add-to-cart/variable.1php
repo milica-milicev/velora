@@ -25,40 +25,30 @@ $variations_attr = function_exists( 'wc_esc_json' ) ? wc_esc_json( $variations_j
 
 do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
-<form class="variations_form" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data' data-product_id="<?php echo absint( $product->get_id() ); ?>" data-product_variations="<?php echo $variations_attr; // WPCS: XSS ok. ?>">
+<form class="variations__form" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data' data-product_id="<?php echo absint( $product->get_id() ); ?>" data-product_variations="<?php echo $variations_attr; // WPCS: XSS ok. ?>">
 	<?php do_action( 'woocommerce_before_variations_form' ); ?>
 
 	<?php if ( empty( $available_variations ) && false !== $available_variations ) : ?>
 		<p class="stock out-of-stock"><?php echo esc_html( apply_filters( 'woocommerce_out_of_stock_message', __( 'This product is currently out of stock and unavailable.', 'woocommerce' ) ) ); ?></p>
 	<?php else : ?>
-		<div class="variation__price">
-			<?php woocommerce_single_variation(); ?>
-		</div>
-		<div class="variations__wrap variations">
+		<div class="variations__wrap variations" cellspacing="0" role="presentation">
 			<?php foreach ( $attributes as $attribute_name => $options ) : ?>
-				<div>
-					<div class="label"><label class="variations__label" for="<?php echo esc_attr( sanitize_title( $attribute_name ) ); ?>"><?php echo wc_attribute_label( $attribute_name ); // WPCS: XSS ok. ?></label></div>
-					<div class="value variations__hidden">
-						<?php
-							wc_dropdown_variation_attribute_options(
-								array(
-									'options'   => $options,
-									'attribute' => $attribute_name,
-									'product'   => $product,
-								)
-							);
-							echo end( $attribute_keys ) === $attribute_name ? wp_kses_post( apply_filters( 'woocommerce_reset_variations_link', '<a class="reset_variations" href="#">' . esc_html__( 'Clear', 'woocommerce' ) . '</a>' ) ) : '';
-						?>
-					</div>
-					<div class="variations__section">
-						<!-- Prilagođeni prikaz dugmadi za veličine -->
-						<?php foreach ( $options as $option ) : ?>
-							<button type="button" class="variations__item js-variation-item" data-attribute_name="<?php echo esc_attr( sanitize_title( $attribute_name ) ); ?>" data-value="<?php echo esc_attr( $option ); ?>">
-								<?php echo esc_html( $option ); ?>
-							</button>
-						<?php endforeach; ?>
-					</div>
-				</div>
+				<label class="variations__label">Veličina</label>
+				<div class="variations__section">
+                    <!-- Pravi WooCommerce select element -->
+                    <select id="<?php echo esc_attr( sanitize_title( $attribute_name ) ); ?>" name="attribute_<?php echo esc_attr( sanitize_title( $attribute_name ) ); ?>" class="hidden-select" style="display:none;">
+                        <?php foreach ( $options as $option ) : ?>
+                            <option value="<?php echo esc_attr( $option ); ?>"><?php echo esc_html( $option ); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+
+                    <!-- Prilagođeni prikaz dugmadi za veličine -->
+                    <?php foreach ( $options as $option ) : ?>
+                        <button type="button" class="variations__item js-variation-item" data-attribute_name="<?php echo esc_attr( sanitize_title( $attribute_name ) ); ?>" data-value="<?php echo esc_attr( $option ); ?>">
+                            <?php echo esc_html( $option ); ?>
+                        </button>
+                    <?php endforeach; ?>
+                </div>
 			<?php endforeach; ?>
 		</div>
 		<?php do_action( 'woocommerce_after_variations_table' ); ?>
@@ -77,8 +67,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 				 * @hooked woocommerce_single_variation - 10 Empty div for variation data.
 				 * @hooked woocommerce_single_variation_add_to_cart_button - 20 Qty and cart button.
 				 */
-				//do_action( 'woocommerce_single_variation' );
-				woocommerce_single_variation_add_to_cart_button();
+				do_action( 'woocommerce_single_variation' );
 
 				/**
 				 * Hook: woocommerce_after_single_variation.

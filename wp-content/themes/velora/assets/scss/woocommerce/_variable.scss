@@ -2,16 +2,16 @@
     margin-bottom: 30px;
 }
 
-.variations__section {
+.variations__wrap {
     margin-bottom: 20px;
 }
 
-.variable-items-wrapper {
+.variations__section {
     display: flex;
     flex-wrap: wrap;
 }
 
-.variable-item-span {
+.variations__item {
     border-radius: 50%;
     cursor: pointer;
     background-color: $white;
@@ -22,25 +22,26 @@
     min-height: 45px;
     min-width: 45px;
     border: 1px solid rgba($black, 0.08);
+    text-transform: uppercase;
     
     @include hover {
         border-color: $black;
     }
 
-    .selected & {
+    &.selected {
         border: 2px solid $black;
     }
 
-    // &.disabled {
-    //     text-decoration: line-through;
-    //     color: $snow;
-    //     cursor: not-allowed;
-    //     background-color: $white-smoke;
-    //     pointer-events: none;
-    // }
+    &.disabled {
+        text-decoration: line-through;
+        color: $snow;
+        cursor: not-allowed;
+        background-color: $white-smoke;
+        pointer-events: none;
+    }
 }
 
-.woo-selected-variation-item-name {
+.variations__hidden {
     display: none;
 }
 
