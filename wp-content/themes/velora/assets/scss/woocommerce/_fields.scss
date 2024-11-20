@@ -26,7 +26,7 @@
     position: relative;
     width: 107px;
     border: 1px solid $white-smoke;
-    margin-bottom: 40px;
+    margin: 30px 0;
 }
 
 .quantity__field.qty.text {
@@ -35,13 +35,15 @@
     padding: 7px 0;
     text-align: center;
     color: $black;
+    background-color: $white;
 }
 
 .quantity__minus,
 .quantity__plus {
     border: 0;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: 800;
     min-width: 30px;
     opacity: 0.8;
     padding: 0;

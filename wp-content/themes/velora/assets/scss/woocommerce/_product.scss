@@ -95,17 +95,11 @@
 }
 
 .single_add_to_cart_button {
-	padding: 20px 60px;
-	border: 0;
-	margin-bottom: 40px;
-	@include clamp-font-size(16, 18);
-	text-transform: uppercase;
-	border-radius: 50px;
 	background-color: $blue;
-	color: $white;
 
-	@include mq($md) {
-		padding: 20px 30px;
+	@include hover {
+		color: $white;
+		background-color: $blue-light;
 	}
 }
 
