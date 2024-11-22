@@ -29,7 +29,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 ?>
 <div class="checkout__main">
-	<div class="container container--sm">
+	<div class="container">
 		<form name="checkout" method="post" class="checkout__form light-form" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 			<div class="checkout__form-container">	
 				<div class="checkout__form-wrap">
@@ -42,9 +42,9 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 								<?php do_action( 'woocommerce_checkout_billing' ); ?>
 							</div>
 
-							<div class="checkout__shipping">
+							<!-- <div class="checkout__shipping">
 								<?php do_action( 'woocommerce_checkout_shipping' ); ?>
-							</div>
+							</div> -->
 						</div>
 
 						<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>

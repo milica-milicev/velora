@@ -65,9 +65,17 @@
         display: none;
     }
 
+    label {
+        padding-bottom: 0;
+    }
+
     @include mq($sm) {
 		display: block;
 	}
+}
+
+abbr[title] {
+    display: none;
 }
 
 .checkout__order-review {

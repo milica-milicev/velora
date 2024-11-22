@@ -297,3 +297,49 @@ add_action('wp_ajax_nopriv_update_cart', 'custom_update_cart');
 //     }
 // }
 // add_action('wp_enqueue_scripts', 'enqueue_qty_counter_script');
+
+/**
+ * Woocommerce remove unnecessary fields from the checkout form
+ */
+add_filter( 'woocommerce_checkout_fields', 'custom_override_checkout_fields' );
+function custom_override_checkout_fields( $fields ) {
+    // Uklanjanje nepotrebnih polja
+    unset( $fields['billing']['billing_last_name'] ); // Uklanjanje polja za prezime
+    unset( $fields['billing']['billing_state'] ); // Uklanjanje polja za državu
+    unset( $fields['billing']['billing_address_2'] ); // Uklanjanje polja za dodatnu adresu
+    unset( $fields['billing']['billing_company'] ); // Uklanjanje polja za naziv kompanije
+    unset( $fields['shipping']['shipping_state'] ); // Uklanjanje polja za dostavu (ako je potrebno)
+
+    // Promena oznake za polje imena
+    $fields['billing']['billing_first_name']['label'] = 'Ime i Prezime';
+
+    // Uklanjanje placeholdera za polje adrese
+    $fields['billing']['billing_address_1']['placeholder'] = '';
+
+    return $fields;
+}
+
+// Hide shipping when free delivery is available
+add_filter( 'woocommerce_package_rates', 'hide_shipping_when_free_is_available', 10, 2 );
+
+function hide_shipping_when_free_is_available( $rates, $package ) {
+    // Proverite da li besplatna dostava postoji
+    $free_shipping = false;
+
+    foreach ( $rates as $rate_id => $rate ) {
+        if ( 'free_shipping' === $rate->method_id ) {
+            $free_shipping = true;
+            break;
+        }
+    }
+
+    if ( $free_shipping ) {
+        foreach ( $rates as $rate_id => $rate ) {
+            if ( 'flat_rate' === $rate->method_id ) {
+                unset( $rates[$rate_id] );
+            }
+        }
+    }
+
+    return $rates;
+}
