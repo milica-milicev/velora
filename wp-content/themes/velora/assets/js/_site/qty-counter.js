@@ -1,63 +1,69 @@
 'use strict';
+
 const QtyCounter = {
-    init: function() {
-        const updateButton = document.querySelector('.js-update-btn'); // Selektuj dugme za ažuriranje
+    init: function () {
+        jQuery(document).ready(function ($) {
+            // Funkcija za slanje AJAX zahteva
+            function updateCart(form) {
+                const formData = form.serialize();
+                $.ajax({
+                    type: 'POST',
+                    url: custom_params.ajax_url, // URL definisan u wp_localize_script
+                    data: {
+                        action: 'update_cart', // Naziv AJAX akcije
+                        form_data: formData   // Podaci iz forme
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            // Ažuriraj HTML tabele korpe
+                            $('div.woocommerce').html(response.data.cart_html);
 
-        function checkIfCartHasChanged() {
-            const qtyFields = document.querySelectorAll('.js-qty-field');
-            const hasChanged = Array.from(qtyFields).some(field => field.value !== field.defaultValue);
-            updateButton.disabled = !hasChanged; // Onemogući ili omogući dugme na osnovu promene
-        }
+                            // Ažuriraj HTML ukupnih cena
+                            $('.cart__collaterals').html(response.data.cart_totals);
 
-        document.body.addEventListener('click', function(e) {
-            if (e.target.classList.contains('js-qty-plus') || e.target.classList.contains('js-qty-minus')) {
-                const btn = e.target;
-                const input = btn.parentNode.querySelector('.qty');
-                let inputValue = parseInt(input.value, 10);
-
-                if (btn.classList.contains('js-qty-plus')) {
-                    inputValue++;
-                } else if (btn.classList.contains('js-qty-minus')) {
-                    if (inputValue > 1) {
-                        inputValue--;
-                    } else {
-                        inputValue = 1; // Prevent the value from going below 1
+                            // Opciono: Ažuriraj mini korpu (ako je koristiš)
+                            $('#mini-cart').html(response.data.mini_cart);
+                        } else {
+                            console.error('Greška pri ažuriranju korpe:', response);
+                        }
+                    },
+                    error: function (error) {
+                        console.error('AJAX greška:', error);
                     }
-                }
-
-                input.value = inputValue;
-
-                if (updateButton) {
-                    checkIfCartHasChanged(); // Proveri promene nakon ažuriranja
-                }
+                });
             }
-        });
 
-        // Prevent manual entry of negative numbers
-        document.body.addEventListener('change', function(e) {
-            if (e.target.classList.contains('js-qty-field') || e.target.classList.contains('qty')) {
-                const input = e.target;
-                let inputValue = parseInt(input.value, 10);
+            // Klik na "+" ili "-" dugme
+            $('body').on('click', '.js-qty-plus, .js-qty-minus', function () {
+                const button = $(this);
+                const input = button.closest('.quantity').find('.qty');
+                const form = button.closest('form'); // Forma korpe
+                let value = parseInt(input.val(), 10);
 
-                if (inputValue < 1) {
-                    input.value = 1;
+                // Uvećaj ili smanji vrednost
+                if (button.hasClass('js-qty-plus')) {
+                    value++;
+                } else if (button.hasClass('js-qty-minus') && value > 1) {
+                    value--;
                 }
 
-                if (updateButton) {
-                    checkIfCartHasChanged(); // Proveri promene nakon manuelne promene
-                }
-            }
-        });
-
-        if (updateButton) {
-            // Opciono: Možete dodati ovaj deo ako želite da proverite promene kada korisnik koristi tastaturu za promenu količine
-            document.body.addEventListener('keyup', function(e) {
-                if (e.target.classList.contains('js-qty-field') || e.target.classList.contains('qty')) {
-                    checkIfCartHasChanged(); // Proveri promene nakon unos preko tastature
-                }
+                input.val(value); // Postavi novu vrednost u input
+                updateCart(form); // Ažuriraj korpu
             });
-        }
+
+            // Ručna promena unosa
+            $('body').on('change', '.qty', function () {
+                const input = $(this);
+                const form = input.closest('form');
+                updateCart(form);
+            });
+        });
     }
 };
 
 export default QtyCounter;
+
+// // Inicijalizacija skripte
+// document.addEventListener('DOMContentLoaded', function () {
+//     QtyCounter.init();
+// });

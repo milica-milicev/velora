@@ -48,7 +48,7 @@
                                 </a>
                                     
                                 <!-- <div class="product-item__actions">
-                                    <?php //woocommerce_template_loop_add_to_cart(); ?>
+                                    <?php // woocommerce_template_loop_add_to_cart(); ?>
                                 </div> -->
                             </div>
                             

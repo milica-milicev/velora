@@ -219,4 +219,54 @@ function custom_reorder_single_product_hooks() {
 }
 add_action( 'woocommerce_init', 'custom_reorder_single_product_hooks' );
 
+function enqueue_qty_counter_script() {
+    wp_enqueue_script(
+        'qty-counter-script',
+        get_template_directory_uri() . '/assets/js/_site/qty-counter.js',
+        array('jquery'),
+        _S_VERSION,
+        true
+    );
+
+    wp_localize_script('qty-counter-script', 'custom_params', array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+    ));
+}
+add_action('wp_enqueue_scripts', 'enqueue_qty_counter_script');
+
+function custom_update_cart() {
+    if (isset($_POST['form_data'])) {
+        parse_str($_POST['form_data'], $form_data);
+
+        foreach ($form_data['cart'] as $cart_key => $cart_value) {
+            WC()->cart->set_quantity($cart_key, $cart_value['qty'], true);
+        }
+        WC()->cart->calculate_totals();
+
+        // Prikupljanje celokupnog HTML sadržaja tabele korpe
+        ob_start();
+        wc_get_template('cart/cart.php');
+        $cart_html = ob_get_clean();
+
+        // Prikupljanje HTML sadržaja za ukupan iznos (totals)
+        ob_start();
+        woocommerce_cart_totals();
+        $cart_totals_html = ob_get_clean();
+
+        // Prikupljanje mini-korpe (opciono)
+        ob_start();
+        woocommerce_mini_cart();
+        $mini_cart_html = ob_get_clean();
+
+        wp_send_json_success(array(
+            'cart_html' => $cart_html,        // HTML za tabelu korpe
+            'cart_totals' => $cart_totals_html, // HTML za ukupne cene
+            'mini_cart' => $mini_cart_html,  // Mini korpa
+        ));
+    } else {
+        wp_send_json_error('Podaci nisu validni');
+    }
+}
+add_action('wp_ajax_update_cart', 'custom_update_cart');
+add_action('wp_ajax_nopriv_update_cart', 'custom_update_cart');
 

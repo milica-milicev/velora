@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
 do_action( 'woocommerce_before_cart' ); ?>
 
 <div class="cart cart-page">
-	<div class="container container--sm">
+	<div class="container">
 		<div class="cart__wrap">
 			<form class="cart__form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 				<?php do_action( 'woocommerce_before_cart_table' ); ?>
@@ -28,8 +28,9 @@ do_action( 'woocommerce_before_cart' ); ?>
 				<table class="cart__table" cellspacing="0">
 					<thead>
 						<tr>
-							<th class="cart__header-thumbnail" colspan="2"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
-							<th class="cart__header-subtotal"><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
+							<th class="cart__header-thumbnail" colspan="3"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
+							<th class="cart__header-thumbnail" colspan="1"><?php esc_html_e( 'Quantity', 'woocommerce' ); ?></th>
+							<th class="cart__header-subtotal" colspan="1"><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -53,6 +54,29 @@ do_action( 'woocommerce_before_cart' ); ?>
 								$product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
 								?>
 								<tr class="cart__item <?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
+
+									<td>
+										<div class="cart__product-remove">
+											<?php
+												echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+													'woocommerce_cart_item_remove_link',
+													sprintf(
+														'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">
+															<img src="%s/assets/images/_demo/trash.svg" alt="%s" />
+														</a>', 
+														esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
+														/* translators: %s is the product name */
+														esc_attr( sprintf( __( 'Remove %s from cart', 'woocommerce' ), wp_strip_all_tags( $product_name ) ) ),
+														esc_attr( $product_id ),
+														esc_attr( $_product->get_sku() ),
+														get_stylesheet_directory_uri(), // Dodavanje putanje do slike
+														__( 'Remove product', 'woocommerce' )
+													),
+													$cart_item_key
+												);
+											?>
+										</div>
+									</td>
 
 									<td class="cart__thumbnail">
 										<?php
@@ -92,12 +116,14 @@ do_action( 'woocommerce_before_cart' ); ?>
 											?>
 										</div>
 
-										<div class="cart__product-price">
+										<!-- <div class="cart__product-price">
 											<?php
 												echo apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
 											?>
-										</div>
+										</div> -->
+									</td>
 
+									<td>
 										<div class="cart__product-quantity">
 											<?php
 											if ( $_product->is_sold_individually() ) {
@@ -121,23 +147,6 @@ do_action( 'woocommerce_before_cart' ); ?>
 											);
 
 											echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $cart_item_key, $cart_item ); // PHPCS: XSS ok.
-											?>
-										</div>
-
-										<div class="cart__product-remove">
-											<?php
-												echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-													'woocommerce_cart_item_remove_link',
-													sprintf(
-														'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">Ukloni proizvod iz korpe</a>',
-														esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
-														/* translators: %s is the product name */
-														esc_attr( sprintf( __( 'Remove %s from cart', 'woocommerce' ), wp_strip_all_tags( $product_name ) ) ),
-														esc_attr( $product_id ),
-														esc_attr( $_product->get_sku() )
-													),
-													$cart_item_key
-												);
 											?>
 										</div>
 									</td>

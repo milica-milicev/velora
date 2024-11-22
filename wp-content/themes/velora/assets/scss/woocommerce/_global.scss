@@ -26,6 +26,7 @@
         .button {
             order: 1;
 			flex-shrink: 0;
+			background-color: $blue;
 
 			@include hover {
 				font-weight: bold;
