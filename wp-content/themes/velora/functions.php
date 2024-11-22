@@ -228,11 +228,21 @@ function enqueue_qty_counter_script() {
         true
     );
 
+	// Dodaj atribut type="module" za skriptu
+    add_filter('script_loader_tag', function ($tag, $handle, $src) {
+        if ('qty-counter-script' === $handle) {
+            $tag = '<script type="module" src="' . esc_url($src) . '"></script>';
+        }
+        return $tag;
+    }, 10, 3);
+
     wp_localize_script('qty-counter-script', 'custom_params', array(
         'ajax_url' => admin_url('admin-ajax.php'),
     ));
 }
 add_action('wp_enqueue_scripts', 'enqueue_qty_counter_script');
+
+
 
 function custom_update_cart() {
     if (isset($_POST['form_data'])) {
@@ -270,3 +280,20 @@ function custom_update_cart() {
 add_action('wp_ajax_update_cart', 'custom_update_cart');
 add_action('wp_ajax_nopriv_update_cart', 'custom_update_cart');
 
+
+// if (!function_exists('enqueue_qty_counter_script')) {
+//     function enqueue_qty_counter_script() {
+//         if (is_product()) { // Proveri da li je stranica proizvoda
+//             wp_enqueue_script('qty-counter', get_template_directory_uri() . '/js/qty-counter.js', array(), '1.0', true);
+
+//             // Dodaj filter za dodavanje atributa type="module"
+//             add_filter('script_loader_tag', function ($tag, $handle, $src) {
+//                 if ('qty-counter' === $handle) { // Proverava da li je skripta 'qty-counter'
+//                     return '<script type="module" src="' . esc_url($src) . '"></script>';
+//                 }
+//                 return $tag;
+//             }, 10, 3);
+//         }
+//     }
+// }
+// add_action('wp_enqueue_scripts', 'enqueue_qty_counter_script');
