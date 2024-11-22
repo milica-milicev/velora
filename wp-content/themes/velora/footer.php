@@ -28,13 +28,22 @@
 				</div>
 				<div class="site-footer__item">
 					<h2>Informacije</h2>
-					<ul class="site-footer__item-list">
+					<?php
+					wp_nav_menu(
+						array(
+							'theme_location' => 'menu-2',
+							'menu_id'        => 'secondary-menu',
+							'menu_class'     => 'site-footer__item-list',
+						)
+					);
+					?>
+					<!-- <ul class="site-footer__item-list">
 						<li><a href="javascript:;">Uputstvo za kupovinu</a></li>
 						<li><a href="javascript:;">Uslovi korišćenja</a></li>
 						<li><a href="javascript:;">Reklamacija</a></li>
 						<li><a href="javascript:;">Blog</a></li>
 						<li><a href="javascript:;">Kontakt</a></li>
-					</ul>
+					</ul> -->
 				</div>
 
 				<div class="site-footer__item">

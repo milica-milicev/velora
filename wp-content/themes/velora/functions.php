@@ -50,6 +50,7 @@ function nm_theme_setup() {
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__( 'Primary', 'nm_theme' ),
+			'menu-2' => esc_html__( 'Secondary', 'nm_theme' ),
 		)
 	);
 

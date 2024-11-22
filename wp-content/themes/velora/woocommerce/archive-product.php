@@ -45,28 +45,45 @@ if ( woocommerce_product_loop() ) : ?>
         <div class="container">
             <div class="products-list__container">
                 <div class="products-list__aside">
-                    <?php
-                    $current_category = get_queried_object();
+                <?php
+                $current_category = get_queried_object();
 
-                    // Proveravamo da li je trenutna kategorija podkategorija (ima roditelja)
-                    if ($current_category instanceof WP_Term && $current_category->parent === 0) :
-                        // Dohvatamo samo glavne kategorije
+                // Check if the current category is a subcategory (has a parent)
+                if ($current_category instanceof WP_Term) :
+                    // If the category has a parent, display the parent category link
+                    if ($current_category->parent !== 0) :
+                        $parent_category = get_term($current_category->parent, 'product_cat'); // Get the parent category
+                        if ($parent_category && !is_wp_error($parent_category)) :
+                            ?>
+                            <div class="parent-category-link">
+                                <a href="<?php echo esc_url(get_term_link($parent_category)); ?>">
+                                    <span class="font-chevron-left"></span>
+                                    Vrati se na <?php echo esc_html($parent_category->name); ?>
+                                </a>
+                            </div>
+                            <?php
+                        endif;
+                    endif;
+
+                    // Check if it's a main category (top-level category)
+                    if ($current_category->parent === 0) :
+                        // Fetch only top-level categories
                         $product_categories = get_terms('product_cat', array(
                             'order'      => 'ASC',
                             'hide_empty' => false,
-                            'parent'     => 0, // Samo glavne kategorije
-                            'exclude'    => array(16) // Uncategorized category ID
+                            'parent'     => 0, // Only main categories
+                            'exclude'    => array(16) // Exclude Uncategorized category ID
                         ));
 
-                        // Proveravamo da li postoje kategorije proizvoda
+                        // Check if there are any product categories
                         if (!empty($product_categories) && !is_wp_error($product_categories)) :
                             ?>
                             <div class="filter">
-                                <h3 class="filter__title">Kategorije</h3>
+                                <h3 class="filter__title">Categories</h3>
                                 <ul>
                                     <?php foreach ($product_categories as $category) : ?>
                                         <?php 
-                                        // Dodajemo klasu za trenutnu kategoriju
+                                        // Add class for the current category
                                         $class = ($current_category->term_id === $category->term_id) ? 'filter__item-active' : ''; 
                                         ?>
                                         <li class="filter__item <?php echo esc_attr($class); ?>">
@@ -80,8 +97,8 @@ if ( woocommerce_product_loop() ) : ?>
                         <?php
                         endif;
                     endif;
-                    ?>
-                    
+                endif;
+                ?>  
                 </div>
 
                 <div class="products-list__main">
@@ -102,9 +119,15 @@ if ( woocommerce_product_loop() ) : ?>
                             <div class="categories categories--listing">
                                 <div class="categories__row">
                                     <?php foreach ( $subcategories as $subcategory ) : ?>
+                                        <?php
+                                        // Get the image ID for the category
+                                        $category_image_id = get_term_meta( $subcategory->term_id, 'thumbnail_id', true );
+                                        // Get the URL of the image
+                                        $category_image_url = wp_get_attachment_url( $category_image_id ) ?: get_stylesheet_directory_uri() . '/assets/images/cat-placeholder-image.jpg'; // Default image if none is set
+                                        ?>
                                         <div class="categories__item">
                                             <a href="<?php echo esc_url( get_term_link( $subcategory ) ); ?>">
-                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/_demo/trudnice.jpg" alt="">
+                                                <img src="<?php echo esc_url( $category_image_url ); ?>" alt="<?php echo esc_attr( $subcategory->name ); ?>">
                                                 <span><?php echo esc_html( $subcategory->name ); ?></span>
                                             </a>
                                         </div>
