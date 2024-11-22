@@ -1,8 +1,8 @@
 
 # BEGIN WordPress
-# Директиве (редови) између "BEGIN WordPress" и "END WordPress" су динамички
-# направљене и требало би да буду измењене само преко Вордпресових филтера.
-# Свака измена директива између ових означивача биће преписана.
+# Direktive (redovi) između "BEGIN WordPress" i "END WordPress" su dinamički
+# napravljene i trebalo bi da budu izmenjene samo preko Vordpresovih filtera.
+# Svaka izmena direktiva između ovih označivača biće prepisana.
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
