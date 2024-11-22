@@ -48,6 +48,7 @@
 	font-size: 12px;
 	text-transform: uppercase;
 	background-color: $orange;
+	z-index: 10;
 
 	@include mq($sm) {
         font-size: 10px;
@@ -113,7 +114,6 @@
 .product__gallery-main-img {
     img {
         width: 100%;
-		max-width: 670px;
 		// margin: 0 auto;
 		// max-height: 400px;
 		object-fit: contain;
@@ -169,6 +169,11 @@
 	}
 }
 
+.product__main-summary-wrap {
+	max-width: 700px;
+	margin-left: auto;
+}
+
 .product__title {
 	@include clamp-font-size(18, 30);
 	font-weight: bold;
@@ -181,13 +186,23 @@
 	margin-bottom: 20px;
 
 	span {
-		@include clamp-font-size(16, 28);
+		@include clamp-font-size(16, 24);
+	}
+
+	del {
+		color: $grey;
+		margin-right: 5px;
+	}
+
+	ins {
 		font-weight: bold;
+		color: $black;
 	}
 
 	.woocommerce-Price-currencySymbol {
 		font-weight: inherit;
 		font-size: inherit;
+		text-transform: uppercase;
 	}
 
 	@include mq($md) {
