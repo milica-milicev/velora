@@ -8,6 +8,21 @@
                 </div>
             </div>
             <div class="contact__col">
+                <?php // echo do_shortcode('[contact-form-7 id="139121c" title="Bez naslova"]'); ?>
+<!-- <div class="contact__form">
+<div class="contact__form-half-col">
+[text* your-name autocomplete:name placeholder "Ime*"]
+</div>
+<div class="contact__form-half-col">
+[email* your-email autocomplete:email placeholder "E-mail*"]
+</div>
+<div class="contact__form-wide-col">
+[textarea* message placeholder] Poruka* [/textarea*]
+</div>
+</div>
+<div class="contact__form-submit-btn-wrap">
+[submit class:btn "Pošalji"]
+</div> -->
                 <form action="">
                     <div class="contact__form">
                         <div class="contact__form-half-col">

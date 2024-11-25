@@ -60,6 +60,10 @@ textarea {
 	width: 100%;
 }
 
+.wpcf7 {
+	position: relative;
+}
+
 .wpcf7-not-valid-tip {
 	font-size: 0.8125rem;
     font-family: $font-main;
@@ -78,7 +82,7 @@ textarea {
 	color: $black;
 	font-size: 0.875rem;
     padding: 0;
-    margin: 0;
+    margin: 10px 0;
     position: absolute;
     top: 100%;
 }

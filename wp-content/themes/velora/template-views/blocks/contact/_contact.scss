@@ -48,6 +48,17 @@
 }
 
 .contact__form {
+    .wpcf7-form-control-wrap {
+        display: block;
+        position: relative;
+        margin-bottom: 20px;
+
+        input,
+        textarea {
+            margin-bottom: 0;
+        }
+    }
+
     @include mq($sm + 1, min) {
         display: flex;
         flex-wrap: wrap;
@@ -67,5 +78,13 @@
     @include mq($sm + 1, min) {
         flex-basis: 100%;
         padding: 0 10px;
+    }
+}
+
+.contact__form-submit-btn-wrap {
+    display: flex;
+
+    p {
+        position: relative;
     }
 }
