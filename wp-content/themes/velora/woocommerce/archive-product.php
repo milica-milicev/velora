@@ -45,60 +45,64 @@ if ( woocommerce_product_loop() ) : ?>
         <div class="container">
             <div class="products-list__container">
                 <div class="products-list__aside">
-                <?php
-                $current_category = get_queried_object();
+                    <?php
+                    $current_category = get_queried_object();
 
-                // Check if the current category is a subcategory (has a parent)
-                if ($current_category instanceof WP_Term) :
-                    // If the category has a parent, display the parent category link
-                    if ($current_category->parent !== 0) :
-                        $parent_category = get_term($current_category->parent, 'product_cat'); // Get the parent category
-                        if ($parent_category && !is_wp_error($parent_category)) :
-                            ?>
-                            <div class="parent-category-link">
-                                <a href="<?php echo esc_url(get_term_link($parent_category)); ?>">
-                                    <span class="font-chevron-left"></span>
-                                    Vrati se na <?php echo esc_html($parent_category->name); ?>
-                                </a>
-                            </div>
-                            <?php
-                        endif;
-                    endif;
-
-                    // Check if it's a main category (top-level category)
-                    if ($current_category->parent === 0) :
-                        // Fetch only top-level categories
-                        $product_categories = get_terms('product_cat', array(
-                            'order'      => 'ASC',
-                            'hide_empty' => false,
-                            'parent'     => 0, // Only main categories
-                            'exclude'    => array(16) // Exclude Uncategorized category ID
-                        ));
-
-                        // Check if there are any product categories
-                        if (!empty($product_categories) && !is_wp_error($product_categories)) :
-                            ?>
-                            <div class="filter">
-                                <h3 class="filter__title">Categories</h3>
-                                <ul>
-                                    <?php foreach ($product_categories as $category) : ?>
-                                        <?php 
-                                        // Add class for the current category
-                                        $class = ($current_category->term_id === $category->term_id) ? 'filter__item-active' : ''; 
-                                        ?>
-                                        <li class="filter__item <?php echo esc_attr($class); ?>">
-                                            <a href="<?php echo esc_url(get_term_link($category)); ?>" class="filter__item-link">
-                                                <?php echo esc_html($category->name); ?>
+                    // Check if the current category is a subcategory (has a parent)
+                    if ($current_category instanceof WP_Term) :
+                        // If the category has a parent, display the parent category link
+                        if ($current_category->parent !== 0) :
+                            $parent_category = get_term($current_category->parent, 'product_cat'); // Get the parent category
+                            if ($parent_category && !is_wp_error($parent_category)) :
+                                ?>
+                                <div class="filter">
+                                    <ul>
+                                        <li class="filter__item">
+                                            <a href="<?php echo esc_url(get_term_link($parent_category)); ?>" class="filter__item-link filter__item-link--icon">
+                                                <span class="icon font-chevron-left"></span>
+                                                Vrati se na <?php echo esc_html($parent_category->name); ?>
                                             </a>
                                         </li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            </div>
-                        <?php
+                                    </ul>
+                                </div>
+                                <?php
+                            endif;
+                        endif;
+
+                        // Check if it's a main category (top-level category)
+                        if ($current_category->parent === 0) :
+                            // Fetch only top-level categories
+                            $product_categories = get_terms('product_cat', array(
+                                'order'      => 'ASC',
+                                'hide_empty' => false,
+                                'parent'     => 0, // Only main categories
+                                'exclude'    => array(16) // Exclude Uncategorized category ID
+                            ));
+
+                            // Check if there are any product categories
+                            if (!empty($product_categories) && !is_wp_error($product_categories)) :
+                                ?>
+                                <div class="filter">
+                                    <h3 class="filter__title">Kategorije:</h3>
+                                    <ul>
+                                        <?php foreach ($product_categories as $category) : ?>
+                                            <?php 
+                                            // Add class for the current category
+                                            $class = ($current_category->term_id === $category->term_id) ? 'filter__item-active' : ''; 
+                                            ?>
+                                            <li class="filter__item <?php echo esc_attr($class); ?>">
+                                                <a href="<?php echo esc_url(get_term_link($category)); ?>" class="filter__item-link">
+                                                    <?php echo esc_html($category->name); ?>
+                                                </a>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                            <?php
+                            endif;
                         endif;
                     endif;
-                endif;
-                ?>  
+                    ?>  
                 </div>
 
                 <div class="products-list__main">

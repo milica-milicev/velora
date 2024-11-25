@@ -51,17 +51,17 @@ const Sliders = {
         });
 
 
-        var productThumbs = new Swiper(".js-product-thumbs", {
-			slidesPerView: 3,
-			spaceBetween: 10,
-			// direction: 'vertical',
-			breakpoints: {
-				767: {
-					slidesPerView: 4,
-					spaceBetween: 20,
-				},
-			},
-		});
+        // var productThumbs = new Swiper(".js-product-thumbs", {
+		// 	slidesPerView: 3,
+		// 	spaceBetween: 10,
+		// 	direction: 'vertical',
+		// 	breakpoints: {
+		// 		767: {
+		// 			slidesPerView: 5,
+		// 			spaceBetween: 20,
+		// 		},
+		// 	},
+		// });
 
 		var productMain = new Swiper(".js-product-main", {
 			watchOverflow: true,
@@ -76,18 +76,43 @@ const Sliders = {
 				fadeEffect: {
 				crossFade: true
 			},
-			thumbs: {
-				swiper: productThumbs
-			}
+			// thumbs: {
+			// 	swiper: productThumbs
+			// }
 		});
 
-		productMain.on('slideChangeTransitionStart', function() {
-			productThumbs.slideTo(productMain.activeIndex);
+		// Dodajte funkcionalnost za sličice kao navigaciju
+		const productThumbs = document.querySelectorAll('.js-product-gallery-thumb');
+
+		productThumbs.forEach((thumb, index) => {
+			thumb.addEventListener('click', () => {
+				// Promenite glavni slajd
+				productMain.slideTo(index);
+
+				// Obeležite aktivnu sličicu
+				productThumbs.forEach(t => t.classList.remove('active'));
+				thumb.classList.add('active');
+			});
 		});
 
-		productThumbs.on('transitionStart', function(){
-			productMain.slideTo(productThumbs.activeIndex);
+		// Sinhronizujte aktivnu sličicu kada se promeni slajd u glavnom slideru
+		productMain.on('slideChange', () => {
+			const activeIndex = productMain.activeIndex;
+
+			productThumbs.forEach(t => t.classList.remove('active'));
+			productThumbs[activeIndex].classList.add('active');
 		});
+
+		// Postavite početnu aktivnu sličicu
+		productThumbs[0].classList.add('active');
+
+		// productMain.on('slideChangeTransitionStart', function() {
+		// 	productThumbs.slideTo(productMain.activeIndex);
+		// });
+
+		// productThumbs.on('transitionStart', function(){
+		// 	productMain.slideTo(productThumbs.activeIndex);
+		// });
 
 		// Custom fancybox - Product gallery slider in modal window
 		const productGallery = document.querySelector('.js-product-gallery');

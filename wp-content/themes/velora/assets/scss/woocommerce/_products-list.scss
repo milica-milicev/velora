@@ -238,3 +238,14 @@
     font-weight: 800;
     text-decoration: underline;
 }
+
+.filter__item-link--icon {
+    display: flex;
+    align-items: center;
+}
+
+.filter__item-link--icon .icon {
+    display: inline-flex;
+    margin-right: 7px;
+    font-size: 13px;
+}

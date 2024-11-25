@@ -43,8 +43,9 @@ $attachment_ids = $product->get_gallery_image_ids();
 					<?php endforeach; ?>
 				</div>
 			</div>
-			<div class="swiper-button-prev js-product-main-prev-btn"></div>
-			<div class="swiper-button-next product__main-next-btn js-product-main-next-btn"></div>
+			<!-- Strelice za navigaciju -->
+			<div class="product__gallery-main__nav product__gallery-main__nav-prev font-chevron-left js-product-main-prev-btn"></div>
+			<div class="product__gallery-main__nav product__gallery-main__nav-next font-chevron-right js-product-main-next-btn"></div>
 		</div>
     <?php else: ?>
         <!-- Main product image if gallery is empty -->

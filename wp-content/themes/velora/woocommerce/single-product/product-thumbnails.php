@@ -28,18 +28,16 @@ $attachment_ids = $product->get_gallery_image_ids();
 
 if ( $attachment_ids && $product->get_image_id() ) { ?>
 	<div class="product__gallery-main-thumbs js-product-thumbs">
-		<div class="swiper-wrapper">
-			<?php
-			foreach ( $attachment_ids as $attachment_id ) { ?>
-				<div class="swiper-slide product__gallery-main-thumbs-img">
-					<?php 
-					$image_html = wp_get_attachment_image( $attachment_id, 'woocommerce_thumbnail' );
+		<?php
+		foreach ( $attachment_ids as $attachment_id ) { ?>
+			<div class="product__gallery-main-thumbs-img js-product-gallery-thumb">
+				<?php 
+				$image_html = wp_get_attachment_image( $attachment_id, 'woocommerce_thumbnail' );
 
-					echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', $image_html, $attachment_id ); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
-					?>
-				</div>
-			<?php } ?>
-		</div>
+				echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', $image_html, $attachment_id ); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
+				?>
+			</div>
+		<?php } ?>
 	</div>
 <?php } ?>	
 

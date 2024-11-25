@@ -106,9 +106,9 @@
     }
 
 	select {
-		appearance: none; /* Uklanja podrazumevani stil */
-		-webkit-appearance: none; /* Za Safari */
-		-moz-appearance: none; /* Za Firefox */
+		appearance: none;
+		-webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
+		-moz-appearance: none; // sass-lint:disable-line no-vendor-prefixes
 		background-color: $white;
 		color: $black;
 		padding: 10px 30px 10px 10px;
