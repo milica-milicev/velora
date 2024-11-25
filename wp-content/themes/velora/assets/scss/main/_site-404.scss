@@ -1,25 +1,18 @@
 ///* ========================================================================
 //   #404/403
 //   ======================================================================== */
-.error404 {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-
-	.site-header,
-	.site-footer {
-		display: none;
-	}
+.error-404 {
+	padding: 70px 0;
 }
 
-.s-404__title {
+.error-404__title {
 	margin-bottom: 40px;
+	text-align: center;
 
 	span {
-		font-size: 300px;
+		font-size: 100px;
 		line-height: 1;
-		color: $black;
+		color: $grey;
 		display: inline-block;
 		position: relative;
 		margin: 0 10px;
@@ -41,29 +34,20 @@
 	}
 }
 
-.s-404__text {
-	font-size: 40px;
+.error-404__content {
+	font-size: 18px;
 	color: $black;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.error-404__text {
+	margin-bottom: 25px;
+}
+
+.error-404__tiles {
 	margin-bottom: 40px;
 }
-
-.s-404__btn {
-	display: inline-block;
-	font-size: 16px;
-	font-family: $font-main;
-	background-color: $black;
-	color: $white;
-	text-transform: uppercase;
-	padding: 15px 30px;
-	transition: $dur $ease;
-	border: 1px solid $black;
-
-	@include hover {
-		background-color: $white;
-		color: $black;
-	}
-}
-
 
 // 404 / 403 floating animation
 @keyframes float {
