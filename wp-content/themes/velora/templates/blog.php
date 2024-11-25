@@ -19,8 +19,8 @@ get_header();
 	<main id="main" class="site-main" role="main">
 		<?php // get content blocks
 			
-			get_template_part( 'template-views/blocks/banner/banner-blog' );
-            get_template_part( 'template-views/blocks/blog/blog' );
+			// get_template_part( 'template-views/blocks/banner/banner-blog' );
+            // get_template_part( 'template-views/blocks/blog/blog' );
 		?>
 	</main>
 </div>
