@@ -29,18 +29,23 @@
                         $product_title = get_the_title($product_id);
                         $product_link = get_the_permalink($product_id);
                         $product_price = $product->get_price_html();
-                        $product_hover = get_field('hover_image',$product_id)
+                        $product_hover = get_field('hover_image',$product_id);
+                        $hover_anim = "";
+
+                        if (!$product_hover) :
+                            $hover_anim = 'product-item__no-hover-anim';
+                        endif;
                         ?>
                         <div class="product-item swiper-slide">
                             <div class="product-item__wrap">
-                                <a href="<?php echo $product_link; ?>" class="product-item__img-wrapper">
-                                    <!-- Glavna slika proizvoda -->
-                                    <img src="<?php echo $product_thumb; ?>" alt="">
-                                    
+                                <a href="<?php echo $product_link; ?>" class="product-item__img-wrapper <?php echo $hover_anim; ?>">
                                     <!-- Hover slika proizvoda -->
                                     <?php if ($product_hover && isset($product_hover['url'])): ?>
                                         <img class="product-item__hover-img" src="<?php echo $product_hover['url']; ?>" alt="<?php echo $product_hover['alt']; ?>">
                                     <?php endif; ?>
+
+                                    <!-- Glavna slika proizvoda -->
+                                    <img src="<?php echo $product_thumb; ?>" alt="">
 
                                     <?php if ($product->is_on_sale()) : ?>
                                         <span class="onsale">Akcija</span>

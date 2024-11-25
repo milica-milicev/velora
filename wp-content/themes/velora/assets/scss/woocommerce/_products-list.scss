@@ -87,6 +87,10 @@
     border-radius: 4px;
     display: block;
 
+    .product-item__hover-img {
+        opacity: 0;
+    }
+
     @include hover {
         &:not(.product-item__no-hover-anim) img:not(.product-item__hover-img) {
             opacity: 0;
