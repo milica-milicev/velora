@@ -6,7 +6,6 @@ import Sliders from './_site/sliders';
 import Size from './_site/size';
 import QtyCounter from './_site/qty-counter';
 
-
 document.addEventListener('DOMContentLoaded', () => {
 	LazyLoader.init();
 	Navigation.init();

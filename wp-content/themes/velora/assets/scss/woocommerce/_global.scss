@@ -39,6 +39,13 @@
 			}
 		}
 	}
+
+	@include mq($xs) {
+		.woocommerce-message,
+		.woocommerce-info {
+			display: block;
+		}
+	}
 }
 
 .notices--revert {

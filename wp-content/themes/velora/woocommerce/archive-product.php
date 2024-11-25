@@ -83,7 +83,7 @@ if ( woocommerce_product_loop() ) : ?>
                             if (!empty($product_categories) && !is_wp_error($product_categories)) :
                                 ?>
                                 <div class="filter">
-                                    <h3 class="filter__title">Kategorije:</h3>
+                                    <!-- <h3 class="filter__title">Kategorije:</h3> -->
                                     <ul>
                                         <?php foreach ($product_categories as $category) : ?>
                                             <?php 

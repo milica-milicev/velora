@@ -12,18 +12,18 @@ const Sliders = {
                 prevEl: '.swiper-button-prev-products',
             },
 
-            breakpoints: {
-              576: {
-                  slidesPerView: 2.3
-              },
-              767: {
-                  slidesPerView: 3.3,
-                  spaceBetween: 20,
-              },
-              1199: {
-                  slidesPerView: 4.3
-              },
-            }
+			breakpoints: {
+				576: {
+					slidesPerView: 2.3
+				},
+				767: {
+					slidesPerView: 4.3,
+				},
+				991: {
+					slidesPerView: 4.3,
+					spaceBetween: 20,
+				}
+			}
         });
 
         var swiperBlog = new Swiper('.js-swiper-blog', {
@@ -45,6 +45,9 @@ const Sliders = {
             },
             767: {
                 slidesPerView: 3,
+            },
+			991: {
+				slidesPerView: 3,
                 spaceBetween: 20,
             },
           }
@@ -84,27 +87,29 @@ const Sliders = {
 		// Dodajte funkcionalnost za sličice kao navigaciju
 		const productThumbs = document.querySelectorAll('.js-product-gallery-thumb');
 
-		productThumbs.forEach((thumb, index) => {
-			thumb.addEventListener('click', () => {
-				// Promenite glavni slajd
-				productMain.slideTo(index);
+		if (productThumbs.length > 0) {
+			productThumbs.forEach((thumb, index) => {
+				thumb.addEventListener('click', () => {
+					// Promenite glavni slajd
+					productMain.slideTo(index);
 
-				// Obeležite aktivnu sličicu
-				productThumbs.forEach(t => t.classList.remove('active'));
-				thumb.classList.add('active');
+					// Obeležite aktivnu sličicu
+					productThumbs.forEach(t => t.classList.remove('active'));
+					thumb.classList.add('active');
+				});
 			});
-		});
 
-		// Sinhronizujte aktivnu sličicu kada se promeni slajd u glavnom slideru
-		productMain.on('slideChange', () => {
-			const activeIndex = productMain.activeIndex;
+			// Sinhronizujte aktivnu sličicu kada se promeni slajd u glavnom slideru
+			productMain.on('slideChange', () => {
+				const activeIndex = productMain.activeIndex;
 
-			productThumbs.forEach(t => t.classList.remove('active'));
-			productThumbs[activeIndex].classList.add('active');
-		});
+				productThumbs.forEach(t => t.classList.remove('active'));
+				productThumbs[activeIndex].classList.add('active');
+			});
 
-		// Postavite početnu aktivnu sličicu
-		productThumbs[0].classList.add('active');
+			// Postavite početnu aktivnu sličicu
+			productThumbs[0].classList.add('active');
+		}
 
 		// productMain.on('slideChangeTransitionStart', function() {
 		// 	productThumbs.slideTo(productMain.activeIndex);

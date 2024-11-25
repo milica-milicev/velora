@@ -43,8 +43,11 @@
 	@if $filename == search {
 		$char: "\E007";
 	}
-	@if $filename == user {
+	@if $filename == trash {
 		$char: "\E008";
+	}
+	@if $filename == user {
+		$char: "\E009";
 	}
 
 	@return $char;
@@ -81,6 +84,9 @@
 }
 .font-search {
 	@include font(search);
+}
+.font-trash {
+	@include font(trash);
 }
 .font-user {
 	@include font(user);

@@ -344,3 +344,12 @@ function hide_shipping_when_free_is_available( $rates, $package ) {
 
     return $rates;
 }
+
+add_action('wp_footer', 'add_custom_mini_cart');
+function add_custom_mini_cart() {
+    ?>
+    <div id="mini-cart" style="display:none;">
+        <?php woocommerce_mini_cart(); ?>
+    </div>
+    <?php
+}

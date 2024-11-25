@@ -51,13 +51,13 @@
     flex-wrap: wrap;
     margin: 0 -5px;
 
-    @include mq($md + 1, min) {
+    @include mq($lg + 1, min) {
         margin: 0 -10px;
     }
 }
 
 .products-list__item {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     flex: 0 0 50%;
     max-width: 50%;
     padding: 0 5px;
@@ -65,7 +65,9 @@
     @include mq($md + 1, min) {
         flex: 0 0 25%;
         max-width: 25%;
-        margin-bottom: 30px;
+    }
+
+    @include mq($lg + 1, min) {
         padding: 0 10px;
     }
 }
@@ -218,6 +220,11 @@
 }
 
 // filter
+.filter {
+    @include mq($md) {
+        margin-bottom: 20px;
+    }
+}
 .filter__title {
     @include clamp-font-size(14, 18);
     line-height: 1.5;

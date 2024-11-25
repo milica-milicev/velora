@@ -15,9 +15,11 @@
  * @version 7.9.0
  */
 
-defined( 'ABSPATH' ) || exit; 
+defined( 'ABSPATH' ) || exit; ?>
 
-do_action( 'woocommerce_before_cart' ); ?>
+<div class="container">
+	<?php do_action( 'woocommerce_before_cart' ); ?>
+</div>
 
 <div class="cart cart-page">
 	<div class="container">
@@ -28,9 +30,9 @@ do_action( 'woocommerce_before_cart' ); ?>
 				<table class="cart__table" cellspacing="0">
 					<thead>
 						<tr>
-							<th class="cart__header-thumbnail" colspan="3"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
-							<th class="cart__header-thumbnail" colspan="1"><?php esc_html_e( 'Quantity', 'woocommerce' ); ?></th>
-							<th class="cart__header-subtotal" colspan="1"><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
+							<th class="cart__header-subtotal"></th>
+							<th class="cart__header-thumbnail" colspan="2"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
+							<th class="cart__header-subtotal"><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -62,7 +64,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 													'woocommerce_cart_item_remove_link',
 													sprintf(
 														'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">
-															<img src="%s/assets/images/_demo/trash.svg" alt="%s" />
+															<span class="icon font-trash"></span>
 														</a>', 
 														esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
 														/* translators: %s is the product name */
@@ -121,9 +123,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 												echo apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
 											?>
 										</div> -->
-									</td>
 
-									<td>
 										<div class="cart__product-quantity">
 											<?php
 											if ( $_product->is_sold_individually() ) {
@@ -155,7 +155,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 										<?php
 											echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
 										?>
-									</td>
+									</td>		
 								</tr>
 								<?php
 							}

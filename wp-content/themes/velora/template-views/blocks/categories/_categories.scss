@@ -11,7 +11,7 @@
     flex-wrap: wrap;
     margin: 0 -5px;
 
-    @include mq($md + 1, min) {
+    @include mq($lg + 1, min) {
         margin: 0 -10px;
     }
 }
@@ -30,6 +30,13 @@
         flex: 0 0 25%;
         max-width: 25%;
         margin-bottom: 0;
+
+        .categories--listing & {
+            margin-bottom: 10px;
+        }
+    }
+
+    @include mq($lg + 1, min) {
         padding: 0 10px;
 
         .categories--listing & {
