@@ -33,6 +33,10 @@ pre {
 	margin-bottom: 20px;
 }
 
+.section-title--sm {
+	@include clamp-font-size(18, 28);
+}
+
 .section-title--center {
 	text-align: center;
 }

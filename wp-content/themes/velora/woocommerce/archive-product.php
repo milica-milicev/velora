@@ -89,8 +89,13 @@ if ( woocommerce_product_loop() ) : ?>
                                             <?php 
                                             // Add class for the current category
                                             $class = ($current_category->term_id === $category->term_id) ? 'filter__item-active' : ''; 
+                                            // Get the value of the ACF "active_category" field for this category
+                                            $is_active = get_field('active_category', 'product_cat_' . $category->term_id);
+
+                                            // Add the "soon" class if the field is not checked
+                                            $class_active = $is_active ? '' : 'filter__item-soon';
                                             ?>
-                                            <li class="filter__item <?php echo esc_attr($class); ?>">
+                                            <li class="filter__item <?php echo esc_attr($class); ?> <?php echo esc_attr($class_active); ?>">
                                                 <a href="<?php echo esc_url(get_term_link($category)); ?>" class="filter__item-link">
                                                     <?php echo esc_html($category->name); ?>
                                                 </a>
