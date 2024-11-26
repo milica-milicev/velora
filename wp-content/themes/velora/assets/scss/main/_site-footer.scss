@@ -34,11 +34,12 @@
 	a  {
 		display: block;
 		font-size: 15px;
+		transition: $dur $ease;
 	}
 
 	a {
 		@include hover {
-			font-weight: 600;
+			opacity: .5;
 		}
 	}
 

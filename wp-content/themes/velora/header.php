@@ -36,13 +36,13 @@
 			<div class="site-header__container">
 				<nav id="site-navigation" class="main-navigation__menu-wrap js-navigation">
 					<?php
-					wp_nav_menu(
-						array(
-							'theme_location' => 'menu-1',
-							'menu_id'        => 'primary-menu',
-							'menu_class'     => 'main-navigation__menu',
-						)
-					);
+						wp_nav_menu(
+							array(
+								'theme_location' => 'menu-1',
+								'menu_id'        => 'primary-menu',
+								'menu_class'     => 'main-navigation__menu',
+							)
+						);
 					?>
 				</nav><!-- #site-navigation -->
 				<button type="button" class="site-header__navigation-toggle js-menu-btn">
