@@ -25,29 +25,32 @@
 	@if $filename == cart {
 		$char: "\E001";
 	}
-	@if $filename == chevron-down {
+	@if $filename == checkmark {
 		$char: "\E002";
 	}
-	@if $filename == chevron-left {
+	@if $filename == chevron-down {
 		$char: "\E003";
 	}
-	@if $filename == chevron-right {
+	@if $filename == chevron-left {
 		$char: "\E004";
 	}
-	@if $filename == facebook {
+	@if $filename == chevron-right {
 		$char: "\E005";
 	}
-	@if $filename == instagram {
+	@if $filename == facebook {
 		$char: "\E006";
 	}
-	@if $filename == search {
+	@if $filename == instagram {
 		$char: "\E007";
 	}
-	@if $filename == trash {
+	@if $filename == search {
 		$char: "\E008";
 	}
-	@if $filename == user {
+	@if $filename == trash {
 		$char: "\E009";
+	}
+	@if $filename == user {
+		$char: "\E00A";
 	}
 
 	@return $char;
@@ -66,6 +69,9 @@
 
 .font-cart {
 	@include font(cart);
+}
+.font-checkmark {
+	@include font(checkmark);
 }
 .font-chevron-down {
 	@include font(chevron-down);
@@ -91,4 +97,4 @@
 .font-user {
 	@include font(user);
 }
-
+

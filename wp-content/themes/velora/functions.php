@@ -191,13 +191,7 @@ add_action( 'after_setup_theme', 'nm_theme_add_woocommerce_support' );
 add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 
 
-add_filter('woocommerce_get_image_size_thumbnail', function($size) {
-    return array(
-        'width' => 400,
-        'height' => 400,
-        'crop' => 1, // 1 za isečenu sliku, 0 za originalne proporcije
-    );
-});
+
 add_theme_support('woocommerce');
 add_theme_support('wc-product-gallery-zoom');
 add_theme_support('wc-product-gallery-lightbox');

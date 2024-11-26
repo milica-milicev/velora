@@ -111,6 +111,72 @@ textarea {
 	}
 }
 
+// Custom checkbox
+.checkbox {
+    display: flex;
+    flex-direction: column;
+	position: relative;
+    padding-left: 24px;
+    padding-bottom: 0;
+    margin-bottom: 7px;
+    cursor: pointer;
+    font-size: 16px;
+    user-select: none;
+	color: $grey;
+	transition: $dur $ease;
+
+    @include hover {
+        color: $black;
+    }
+}
+
+.checkbox input[type='checkbox'] {
+    display: none;
+}
+
+.checkbox .checkbox__checkmark {
+    position: absolute;
+    top: 1px;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: $white;
+    border-radius: 3px;
+    border: 1px solid $grey;
+}
+
+.checkbox input:checked ~ .checkbox__checkmark {
+    background-color: $black;
+    border-color: $black;
+}
+
+.checkbox .checkbox__checkmark::before {
+    position: absolute;
+    display: none;
+    left: 2px;
+    top: 3px;
+    color: $white;
+    font-size: 7px;
+}
+  
+.checkbox input:checked ~ .checkbox__checkmark::before {
+    display: block;
+}
+
+.checkbox__text {
+	color: $black;
+
+	a {
+		color: $orange;
+		text-decoration: underline;
+		transition: $dur $ease;
+
+		@include hover {
+			color: $black;
+		}
+	}
+}
+
 /*--------------------------------------------------------------
 ## CF7 Plugin Form
 --------------------------------------------------------------*/
