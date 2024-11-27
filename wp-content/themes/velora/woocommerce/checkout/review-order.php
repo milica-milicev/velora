@@ -99,7 +99,7 @@ defined( 'ABSPATH' ) || exit;
 	<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
 
 	<div class="checkout__order-total checkout__totals-item">
-		<span><?php esc_html_e( 'Total', 'woocommerce' ); ?></span>
+		<span><?php esc_html_e( 'Total:', 'woocommerce' ); ?></span>
 		<span><?php wc_cart_totals_order_total_html(); ?></span>
 	</div>
 </div>

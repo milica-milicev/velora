@@ -21,10 +21,11 @@ get_header();
 			
 			// get_template_part( 'template-views/blocks/new-block/new-block' );
 			get_template_part( 'template-views/blocks/hero/hero' );
-			get_template_part( 'template-views/blocks/services/services' );
+			
 			get_template_part( 'template-views/blocks/categories/categories' );
 			get_template_part( 'template-views/blocks/products-slider/products-slider' );
 			get_template_part( 'template-views/blocks/banner-box/banner-box' );
+			get_template_part( 'template-views/blocks/services/services' );
 			get_template_part( 'template-views/blocks/recent-posts/recent-posts' );
 			get_template_part( 'template-views/blocks/subscribe/subscribe' );
 		?>

@@ -3,7 +3,7 @@
 }
 
 .variations__wrap {
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 .variations__section {
@@ -19,8 +19,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 45px;
-    min-width: 45px;
+    min-height: 55px;
+    min-width: 55px;
     border: 1px solid rgba($black, 0.08);
     text-transform: uppercase;
     
@@ -48,6 +48,6 @@
 .variations__label {
     font-size: 14px;
     font-weight: 800;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     padding-bottom: 0;
 }

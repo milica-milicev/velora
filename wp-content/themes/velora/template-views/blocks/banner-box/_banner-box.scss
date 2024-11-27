@@ -1,14 +1,14 @@
 .banner-box {
-    padding: 20px 0;
+    padding: 40px 0;
 
-    @include mq($md + 1, min) {
-        padding: 40px 0;
-    }
+    // @include mq($md) {
+    //     padding: 40px 0;
+    // }
 }
 
 .banner-box__wrap {
     position: relative;
-    display: block;
+    // display: block;
     min-height: 550px;
     display: flex;
     flex-wrap: wrap;

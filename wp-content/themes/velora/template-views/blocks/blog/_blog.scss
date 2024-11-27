@@ -1,5 +1,9 @@
 .blog {
     padding: 50px 0;
+
+    @include mq($md) {
+        padding: 20px 0;
+    }
 }
 
 .blog__wrap {
@@ -23,6 +27,11 @@
         max-width: 33.333%;
         padding: 0 10px;
         margin-bottom: 60px;
+    }
+
+    @include mq($md) {
+        flex: 100%;
+        max-width: 100%;
     }
 }
 

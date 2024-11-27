@@ -82,6 +82,11 @@
 		color: $white;
 		background-color: $blue-light;
 	}
+
+	@include mq($md) {
+		width: 100%;
+		margin-top: 20px;
+	}
 }
 
 .product__gallery-main-slider,
@@ -173,14 +178,17 @@
 }
 
 .product__price {
-	margin-bottom: 20px;
+	// margin-bottom: 20px;
+	line-height: 1;
 
 	span {
-		@include clamp-font-size(16, 24);
+		@include clamp-font-size(22, 25);
+		color: $blue;
+		font-weight: bold;
 	}
 
 	del {
-		color: $grey;
+		color: $orange;
 		margin-right: 5px;
 	}
 
@@ -192,12 +200,19 @@
 	.woocommerce-Price-currencySymbol {
 		font-weight: inherit;
 		font-size: inherit;
-		text-transform: uppercase;
+		// text-transform: uppercase;
+		// @include clamp-font-size(12, 17);
 	}
 
 	@include mq($md) {
-		margin-bottom: 10px;
+		margin-bottom: 0;
 	}
+}
+
+.vat-info {
+	// margin-top: 10px;
+	font-size: 14px;
+	color: #666;
 }
 
 .product__main-content {
@@ -226,15 +241,15 @@
 	margin: 30px 0;
 }
 
-.product__actions-wrap .woocommerce-variation-add-to-cart {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
+// .product__actions-wrap .woocommerce-variation-add-to-cart {
+// 	display: flex;
+// 	flex-wrap: wrap;
+// 	align-items: center;
 
-	.quantity {
-		margin-right: 20px;
-	}
-}
+// 	.quantity {
+// 		margin-right: 20px;
+// 	}
+// }
 
 
 /* Osnovni stil za modalni prozor */

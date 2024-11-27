@@ -27,10 +27,25 @@
         object-fit: cover;
         object-position: center top;
     }
+
+    @include mq($md) {
+        width: 100%;
+
+        img {
+            opacity: .5;
+        }
+    }
 }
 
 .hero__content {
     max-width: 50%;
+    z-index: 2;
+    position: relative;
+
+    @include mq($md) {
+        max-width: 100%;
+        padding-top: 150px;
+    }
 }
 
 .hero__title {

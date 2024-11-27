@@ -32,7 +32,7 @@
 }
 
 .post-item__title {
-    @include clamp-font-size(14, 16);
+    @include clamp-font-size(16, 18);
     line-height: 1.5;
     margin-bottom: 8px;
     font-weight: 800;
@@ -40,4 +40,5 @@
 
 .post-item__excerpt {
     color: rgba($black, 0.8);
+    @include clamp-font-size(14, 16);
 }

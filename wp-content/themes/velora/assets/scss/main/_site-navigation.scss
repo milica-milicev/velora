@@ -70,6 +70,12 @@ a {
 	.is-sticky & {
 		background-color: $black;
 	}
+
+	@include mq($md) {
+		.is-active & {
+			background-color: $white;
+		}
+	}
 }
 
 .main-navigation__menu-wrap {
@@ -93,6 +99,10 @@ a {
 			transform: translateX(0);
 			transition: transform $dur $ease, opacity $dur $ease, visibility $dur $ease;
 		}
+	}
+
+	@include mq($md) {
+		background-color: $black;
 	}
 }
 

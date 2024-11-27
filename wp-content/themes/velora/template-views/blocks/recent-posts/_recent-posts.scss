@@ -7,9 +7,9 @@
         }
     }
 
-    @include mq($md) {
-        padding: 20px 0;
-    }
+    // @include mq($md) {
+    //     padding: 20px 0;
+    // }
 }
 
 .recent-posts__container {

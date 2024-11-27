@@ -1,5 +1,5 @@
 .products-slider {
-    padding: 40px 0 40px 80px;
+    padding: 80px 0 80px 80px;
     margin-left: auto;
     max-width: calc(50% + 845px);
     position: relative;
@@ -12,9 +12,9 @@
         padding: 40px 0 40px 25px;
     }
 
-    @include mq($md) {
-        padding: 20px 0 20px 15px;
-    }
+    // @include mq($md) {
+    //     padding: 20px 0 20px 15px;
+    // }
 }
 
 .products-slider__wrapper {
@@ -35,7 +35,6 @@
     justify-content: space-between;
     z-index: 10;
     max-width: 1680px;
-    width: 100%;
     padding: 0 80px;
     left: 0;
 

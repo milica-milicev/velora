@@ -62,7 +62,7 @@
     border-radius: 4px;
     padding-bottom: 125%;
     display: block;
-    background-color: $black;
+    background-color: transparent;
 
     span {
         position: absolute;
@@ -70,7 +70,7 @@
         left: 0;
         max-width: 100%;
         padding: 15px;
-        color: $white;
+        color: $black;
         @include clamp-font-size(17, 21);
         font-weight: 800;
         text-transform: uppercase;
