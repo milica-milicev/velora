@@ -22,6 +22,10 @@ $grey-light: #eaeaea;
 $blue: #0086d6;
 $blue-light: #0099f5;
 $grey: #bcbcbc;
+$green: #4caf50;
+$red: #f00;
+$light-slate-blue: #96f;
+$purple-heart: #653cb6;
 
 $site-colors: (
 	'white': $white,
@@ -33,6 +37,10 @@ $site-colors: (
 	'blue': $blue,
 	'blue-light': $blue-light,
 	'grey': $grey,
+	'green': $green,
+	'red': $red,
+	'light-state-blue': $light-slate-blue,
+	'purple-heart': $purple-heart,
 ) !default;
 
 // Transitions

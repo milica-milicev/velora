@@ -49,7 +49,6 @@ get_header(); ?>
 					endwhile; // End of the loop.
 					?>
 				</div>
-				
 			</div>
 
 			<div class="recente-blogs">

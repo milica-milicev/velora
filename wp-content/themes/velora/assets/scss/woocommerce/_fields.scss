@@ -26,16 +26,18 @@
     position: relative;
     width: 107px;
     border: 1px solid $white-smoke;
-    margin: 30px 0;
+
+    @include mq($xl) {
+        margin-bottom: 30px;
+    }
 
     @include mq($md) {
-        margin: 30px 0 10px;
-        max-height: 40px;
+        max-height: 34px;
+        margin-bottom: 10px;
     }
 }
 
 .quantity__field.qty.text {
-    // font-weight: 600;
     margin: 0;
     padding: 11px 0;
     text-align: center;

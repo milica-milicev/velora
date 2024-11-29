@@ -4,17 +4,9 @@
     max-width: calc(50% + 845px);
     position: relative;
 
-    // @include mq($xxxl) {
-    //     margin-left: auto;
-    // }
-
     @include mq($xl) {
         padding: 40px 0 40px 25px;
     }
-
-    // @include mq($md) {
-    //     padding: 20px 0 20px 15px;
-    // }
 }
 
 .products-slider__wrapper {

@@ -396,3 +396,29 @@ function add_vat_text_below_price() {
     echo '<p class="vat-info">Sa PDV-om</p>';
 }
 add_action( 'woocommerce_single_product_summary', 'add_vat_text_below_price', 11 );
+
+// Dodavanje klasa za stilizaciju
+add_filter( 'woocommerce_get_availability', 'custom_get_availability_classes', 10, 2 );
+function custom_get_availability_classes( $availability, $product ) {
+    if ( isset( $availability['availability'] ) ) {
+        // Dodavanje klase "low-stock" ako tekst sadrži "1 na zalihama" ili "2 na zalihama"
+        if ( strpos( $availability['availability'], '1 na zalihama' ) !== false || strpos( $availability['availability'], '2 na zalihama' ) !== false ) {
+            $availability['class'] = 'low-stock';
+        } elseif ( strpos( $availability['availability'], 'Na zalihama' ) !== false ) {
+            $availability['class'] = 'in-stock';
+        }
+    }
+    return $availability;
+}
+
+// Promena teksta dostupnosti
+add_filter( 'woocommerce_get_availability_text', 'custom_availability_text', 10, 2 );
+function custom_availability_text( $availability, $product ) {
+    // Menjamo tekst "Samo X je preostalo na zalihama" u "X na zalihama"
+    if ( strpos( $availability, 'Samo' ) !== false ) {
+        $availability = str_replace( 'Samo ', '', $availability );
+        $availability = str_replace( ' je preostalo na zalihama', ' na zalihama', $availability );
+    }
+    return $availability;
+}
+
