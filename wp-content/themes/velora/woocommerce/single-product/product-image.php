@@ -68,12 +68,12 @@ $attachment_ids = $product->get_gallery_image_ids();
 			<?php if ( ! empty( $attachment_ids ) && count( $attachment_ids ) > 0 ) : ?>
 				<?php foreach ( $attachment_ids as $attachment_id ) : ?>
 					<div class="swiper-slide product__gallery-modal-slider-img">
-						<?php echo wp_get_attachment_image( $attachment_id, 'woocommerce_single' ); ?>
+						<?php echo wp_get_attachment_image( $attachment_id, 'full' ); ?>
 					</div>
 				<?php endforeach; ?>
 				<?php else : ?>
 					<div class="swiper-slide product__gallery-modal-slider-img">
-						<?php echo wp_get_attachment_image( $post_thumbnail_id, 'woocommerce_single' ); ?>
+						<?php echo wp_get_attachment_image( $post_thumbnail_id, 'full' ); ?>
 					</div>
 				<?php endif; ?>
 			</div>

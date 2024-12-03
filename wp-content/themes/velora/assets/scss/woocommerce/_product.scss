@@ -282,8 +282,8 @@
 .product__gallery-modal-inner {
     position: relative;
     margin: auto;
-    max-height: 80%; /* Maksimalna visina sadržaja */
-    overflow: hidden; /* Sakriva prekoračeni sadržaj */
+    height: calc(100% - 100px); /* Maksimalna visina sadržaja */
+	max-width: 100%;
 }
 
 .product__gallery-main__nav {
@@ -330,9 +330,16 @@
     right: 10px;
 }
 
+.product__gallery-modal-slider {
+	height: 100%;
+}
+
 .product__gallery-modal-slider-img {
 	img {
 		margin: 0 auto;
+		width: auto;
+		height: 100%;
+		object-fit: contain;
 	}
 }
 
