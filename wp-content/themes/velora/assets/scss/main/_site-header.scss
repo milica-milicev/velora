@@ -46,6 +46,34 @@
 			}
 		}
 	}
+
+	@include mq($lg) {
+		.site-header__navigation-toggle-stripe {
+			background-color: $white;
+		}
+
+		&.is-sticky .site-header__navigation-toggle-stripe {
+			background-color: $black;
+		}
+
+		&.is-active-header {
+			.site-header__logo-img {
+				fill: $white;
+			}
+	
+			.main-navigation__menu a {
+				color: $white;
+	
+				&::after {
+					background-color: $white;
+				}
+			}
+
+			.site-header__navigation-toggle-stripe {
+				background-color: $white;
+			}
+		}
+	}
 }
 
 .site-header__actions {
@@ -68,14 +96,18 @@
 
 .site-header__logo-img {
 	display: block;
-	max-width: 130px;
+	max-width: 150px;
 	width: 100%;
 	position: relative;
 	fill: $black;
 	transition: $dur $ease;
 
-	@include mq($lg + 1, min) {
-		max-width: 150px;
+	@include mq($lg) {
+		max-width: 130px;
+
+		.is-active-header & {
+			fill: $white;
+		}
 	}
 }
 

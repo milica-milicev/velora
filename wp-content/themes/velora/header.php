@@ -31,7 +31,7 @@
 <div id="page" class="site <?php echo $clear_header_class; ?>">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'nm_theme' ); ?></a>
 
-	<header id="masthead" class="site-header">
+	<header id="masthead" class="site-header js-site-header">
 		<div class="container">
 			<div class="site-header__container">
 				<nav id="site-navigation" class="main-navigation__menu-wrap js-navigation">
