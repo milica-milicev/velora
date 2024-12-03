@@ -37,20 +37,23 @@
 	@if $filename == chevron-right {
 		$char: "\E005";
 	}
-	@if $filename == facebook {
+	@if $filename == close {
 		$char: "\E006";
 	}
-	@if $filename == instagram {
+	@if $filename == facebook {
 		$char: "\E007";
 	}
-	@if $filename == search {
+	@if $filename == instagram {
 		$char: "\E008";
 	}
-	@if $filename == trash {
+	@if $filename == search {
 		$char: "\E009";
 	}
-	@if $filename == user {
+	@if $filename == trash {
 		$char: "\E00A";
+	}
+	@if $filename == user {
+		$char: "\E00B";
 	}
 
 	@return $char;
@@ -82,6 +85,9 @@
 .font-chevron-right {
 	@include font(chevron-right);
 }
+.font-close {
+	@include font(close);
+}
 .font-facebook {
 	@include font(facebook);
 }
@@ -97,4 +103,4 @@
 .font-user {
 	@include font(user);
 }
-
+
