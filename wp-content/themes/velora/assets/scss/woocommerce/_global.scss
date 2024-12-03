@@ -1,6 +1,13 @@
 /*--------------------------------------------------------------
 # Woocommerce global elements
 --------------------------------------------------------------*/
+// .woocommerce-notices-wrapper {
+// 	max-width: 1680px;
+// 	padding: 0 80px;
+// 	margin: 0 auto;
+// 	width: 100%;
+// }
+
 .notices {
 	margin-bottom: 15px;
 
@@ -22,6 +29,7 @@
 		background: $white-smoke;
 		padding: 11px 25px;
 		border-radius: 4px;
+		text-align: center;
 
         .button {
             order: 1;
@@ -35,8 +43,10 @@
         }
 
 		a {
+			font-weight: bold;
 			@include hover {
-				font-weight: bold;
+				
+				color: $purple-heart;
 			}
 		}
 	}

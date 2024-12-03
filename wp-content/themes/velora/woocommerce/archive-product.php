@@ -25,6 +25,16 @@ get_header( 'shop' );
         <div class="banner__content">
             <?php woocommerce_breadcrumb(); ?>
             <h1 class="banner__title"><?php woocommerce_page_title(); ?></h1>
+            <?php
+            // Dodavanje podnaslova
+            $current_category = get_queried_object(); // Dohvatanje trenutne kategorije
+            if ( $current_category && isset( $current_category->term_id ) ) {
+                $subtitle = get_field( 'subcategory_subtitle', 'product_cat_' . $current_category->term_id ); // Dohvatanje vrednosti ACF polja
+                if ( $subtitle ) {
+                    echo '<p class="banner__subtitle">' . esc_html( $subtitle ) . '</p>'; // Prikaz podnaslova
+                }
+            }
+            ?>
         </div>
     </div>
 </div>
@@ -38,8 +48,6 @@ get_header( 'shop' );
  */
 do_action( 'woocommerce_archive_description' );
 
-
-// Continue with the existing product loop and other content
 if ( woocommerce_product_loop() ) : ?>
     <div class="products-list">
         <div class="container">
@@ -48,11 +56,9 @@ if ( woocommerce_product_loop() ) : ?>
                     <?php
                     $current_category = get_queried_object();
 
-                    // Check if the current category is a subcategory (has a parent)
                     if ($current_category instanceof WP_Term) :
-                        // If the category has a parent, display the parent category link
                         if ($current_category->parent !== 0) :
-                            $parent_category = get_term($current_category->parent, 'product_cat'); // Get the parent category
+                            $parent_category = get_term($current_category->parent, 'product_cat');
                             if ($parent_category && !is_wp_error($parent_category)) :
                                 ?>
                                 <div class="filter">
@@ -69,30 +75,22 @@ if ( woocommerce_product_loop() ) : ?>
                             endif;
                         endif;
 
-                        // Check if it's a main category (top-level category)
                         if ($current_category->parent === 0) :
-                            // Fetch only top-level categories
                             $product_categories = get_terms('product_cat', array(
                                 'order'      => 'ASC',
                                 'hide_empty' => false,
-                                'parent'     => 0, // Only main categories
-                                'exclude'    => array(16) // Exclude Uncategorized category ID
+                                'parent'     => 0,
+                                'exclude'    => array(16)
                             ));
 
-                            // Check if there are any product categories
                             if (!empty($product_categories) && !is_wp_error($product_categories)) :
                                 ?>
                                 <div class="filter">
-                                    <!-- <h3 class="filter__title">Kategorije:</h3> -->
                                     <ul>
                                         <?php foreach ($product_categories as $category) : ?>
                                             <?php 
-                                            // Add class for the current category
                                             $class = ($current_category->term_id === $category->term_id) ? 'filter__item-active' : ''; 
-                                            // Get the value of the ACF "active_category" field for this category
                                             $is_active = get_field('active_category', 'product_cat_' . $category->term_id);
-
-                                            // Add the "soon" class if the field is not checked
                                             $class_active = $is_active ? '' : 'filter__item-soon';
                                             ?>
                                             <li class="filter__item <?php echo esc_attr($class); ?> <?php echo esc_attr($class_active); ?>">
@@ -112,13 +110,12 @@ if ( woocommerce_product_loop() ) : ?>
 
                 <div class="products-list__main">
                     <?php
-                    // Display subcategories if on a category archive
                     if ( is_product_category() ) :
                         $term = get_queried_object();
                         $args = array(
                             'parent'       => $term->term_id,
                             'taxonomy'     => 'product_cat',
-                            'hide_empty'   => false, // Change to true to hide empty categories
+                            'hide_empty'   => false,
                         );
 
                         $subcategories = get_terms( $args );
@@ -129,10 +126,8 @@ if ( woocommerce_product_loop() ) : ?>
                                 <div class="categories__row">
                                     <?php foreach ( $subcategories as $subcategory ) : ?>
                                         <?php
-                                        // Get the image ID for the category
                                         $category_image_id = get_term_meta( $subcategory->term_id, 'thumbnail_id', true );
-                                        // Get the URL of the image
-                                        $category_image_url = wp_get_attachment_url( $category_image_id ) ?: get_stylesheet_directory_uri() . '/assets/images/cat-placeholder-image.jpg'; // Default image if none is set
+                                        $category_image_url = wp_get_attachment_url( $category_image_id ) ?: get_stylesheet_directory_uri() . '/assets/images/cat-placeholder-image.jpg';
                                         ?>
                                         <div class="categories__item">
                                             <a href="<?php echo esc_url( get_term_link( $subcategory ) ); ?>">
@@ -160,7 +155,29 @@ if ( woocommerce_product_loop() ) : ?>
                                 </div>
                             <?php endwhile; ?>
                         </div>
+                        <?php
+                        // Provera da li ima više od 16 proizvoda za prikazivanje paginacije
+                        if ( wc_get_loop_prop( 'total' ) > 16 ) :
+                        ?>
+                            <div class="products-pagination">
+                                <?php woocommerce_pagination(); ?>
+                            </div>
+                        <?php endif; ?>
                     <?php endif; ?>
+
+
+                    <?php
+                    // Dodavanje WYSIWYG sadržaja ispod proizvoda
+                    $current_category = get_queried_object();
+                    if ( $current_category && isset( $current_category->term_id ) ) {
+                        $subcategory_content = get_field( 'subcategory_content', 'product_cat_' . $current_category->term_id );
+                        if ( $subcategory_content ) {
+                            echo '<div class="entry-content">';
+                            echo wp_kses_post( $subcategory_content );
+                            echo '</div>';
+                        }
+                    }
+                    ?>
                 </div>
             </div>
         </div>

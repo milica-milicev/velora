@@ -68,8 +68,8 @@ pre {
 	}
 
 	h2 {
-		@include clamp-font-size(24, 40);
-		margin-bottom: clamp(1.25rem, 1.0625rem + 0.9375vw, 2rem);
+		@include clamp-font-size(24, 35);
+		margin: 20px 0 10px;
 	}
 
 	h3,
@@ -77,14 +77,14 @@ pre {
 	h5,
 	h6 {
 		@include clamp-font-size(16, 24);
-		margin-bottom: clamp(1.25rem, 1.125rem + 0.625vw, 2rem);
+		margin: 20px 0 10px;
 	}
 
 	p {
 		@include clamp-font-size(14, 16);
 		font-family: $font-main;
 		color: $black;
-		margin-bottom: 10px;
+		margin-bottom: 25px;
 
 		&:last-of-type {
 			margin-bottom: 0;

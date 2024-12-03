@@ -242,10 +242,12 @@
 }
 
 .product__short-description {
-	margin: 30px 0;
+	margin: 30px 0 0;
 
-	@include mq($md) {
-		margin: 30px 0 0;
+	&.entry-content {
+		p {
+			margin-bottom: 15px;
+		}
 	}
 }
 
@@ -352,4 +354,38 @@
 	@include hover {
 		background-color: rgba($white, 0.05);
 	}
+}
+
+////Product Pagination
+/// 
+/// 
+.products-pagination {
+	padding: 20px 0 70px;
+	text-align: center;
+}
+
+.products-pagination .woocommerce-pagination {
+	display: inline-block;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.products-pagination .woocommerce-pagination li {
+	display: inline;
+	margin: 0 5px;
+}
+
+.products-pagination .woocommerce-pagination a,
+.products-pagination .woocommerce-pagination span {
+	padding: 8px 12px;
+	background-color: $white-smoke;
+	border: 1px solid #ddd;
+	text-decoration: none;
+	color: $grey;
+}
+
+.products-pagination .woocommerce-pagination .current {
+	background-color: $purple-heart;
+	color: $white;
 }

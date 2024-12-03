@@ -44,9 +44,18 @@ if ( wc_get_page_id( 'shop' ) > 0 ) : ?>
 				if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) : ?>
 					<?php foreach ( $product_categories as $category ) :
 						$category_link = get_term_link( $category );
-						if ( ! is_wp_error( $category_link ) ) : ?>
+						if ( ! is_wp_error( $category_link ) ) :
+							// Dohvatite URL slike kategorije
+							$thumbnail_id = get_term_meta( $category->term_id, 'thumbnail_id', true );
+							$category_image_url = wp_get_attachment_url( $thumbnail_id ); // URL slike
+							?>
 							<div class="categories__item">
 								<a href="<?php echo esc_url( $category_link ); ?>">
+									<?php if ( $category_image_url ) : ?>
+										<img src="<?php echo esc_url( $category_image_url ); ?>" alt="<?php echo esc_attr( $category->name ); ?>">
+									<?php else : ?>
+										<img src="<?php echo esc_url( get_template_directory_uri() . '/images/default-category.jpg' ); ?>" alt="<?php echo esc_attr( $category->name ); ?>"> <!-- Rezervna slika -->
+									<?php endif; ?>
 									<span><?php echo esc_html( $category->name ); ?></span>
 								</a>
 							</div>

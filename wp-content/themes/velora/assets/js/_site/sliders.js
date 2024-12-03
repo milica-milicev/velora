@@ -53,19 +53,6 @@ const Sliders = {
           }
         });
 
-
-        // var productThumbs = new Swiper(".js-product-thumbs", {
-		// 	slidesPerView: 3,
-		// 	spaceBetween: 10,
-		// 	direction: 'vertical',
-		// 	breakpoints: {
-		// 		767: {
-		// 			slidesPerView: 5,
-		// 			spaceBetween: 20,
-		// 		},
-		// 	},
-		// });
-
 		var productMain = new Swiper(".js-product-main", {
 			watchOverflow: true,
 			watchSlidesVisibility: true,
@@ -79,9 +66,6 @@ const Sliders = {
 				fadeEffect: {
 				crossFade: true
 			},
-			// thumbs: {
-			// 	swiper: productThumbs
-			// }
 		});
 
 		// Dodajte funkcionalnost za sličice kao navigaciju
@@ -110,14 +94,6 @@ const Sliders = {
 			// Postavite početnu aktivnu sličicu
 			productThumbs[0].classList.add('active');
 		}
-
-		// productMain.on('slideChangeTransitionStart', function() {
-		// 	productThumbs.slideTo(productMain.activeIndex);
-		// });
-
-		// productThumbs.on('transitionStart', function(){
-		// 	productMain.slideTo(productThumbs.activeIndex);
-		// });
 
 		// Custom fancybox - Product gallery slider in modal window
 		const productGallery = document.querySelector('.js-product-gallery');

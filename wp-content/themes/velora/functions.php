@@ -258,40 +258,19 @@ function custom_update_cart() {
         woocommerce_cart_totals();
         $cart_totals_html = ob_get_clean();
 
-        // Prikupljanje mini-korpe (opciono)
-        ob_start();
-        woocommerce_mini_cart();
-        $mini_cart_html = ob_get_clean();
-
         wp_send_json_success(array(
             'cart_html' => $cart_html,        // HTML za tabelu korpe
             'cart_totals' => $cart_totals_html, // HTML za ukupne cene
-            'mini_cart' => $mini_cart_html,  // Mini korpa
+            'cart_count' => WC()->cart->get_cart_contents_count(), // Ukupan broj proizvoda
         ));
     } else {
         wp_send_json_error('Podaci nisu validni');
     }
 }
+
 add_action('wp_ajax_update_cart', 'custom_update_cart');
 add_action('wp_ajax_nopriv_update_cart', 'custom_update_cart');
 
-
-// if (!function_exists('enqueue_qty_counter_script')) {
-//     function enqueue_qty_counter_script() {
-//         if (is_product()) { // Proveri da li je stranica proizvoda
-//             wp_enqueue_script('qty-counter', get_template_directory_uri() . '/js/qty-counter.js', array(), '1.0', true);
-
-//             // Dodaj filter za dodavanje atributa type="module"
-//             add_filter('script_loader_tag', function ($tag, $handle, $src) {
-//                 if ('qty-counter' === $handle) { // Proverava da li je skripta 'qty-counter'
-//                     return '<script type="module" src="' . esc_url($src) . '"></script>';
-//                 }
-//                 return $tag;
-//             }, 10, 3);
-//         }
-//     }
-// }
-// add_action('wp_enqueue_scripts', 'enqueue_qty_counter_script');
 
 /**
  * Woocommerce remove unnecessary fields from the checkout form
@@ -357,31 +336,34 @@ function add_custom_mini_cart() {
 function sbw_wc_add_buy_now_button_single() {
     global $product;
 
+    // Prikaz dugmeta "Kupi odmah" bez dodatnog inputa
     printf(
-        '<button id="sbw-wc-adding-button" type="submit" name="sbw-wc-buy-now" value="%d" class=" single_add_to_cart_button buy_now_button button alt">%s</button>',
+        '<button id="sbw-wc-adding-button" type="submit" name="sbw-wc-buy-now" value="%d" class="single_add_to_cart_button buy_now_button button alt">%s</button>',
         $product->get_id(),
         esc_html__( 'Kupi odmah', 'woocommerce' )
     );
 }
 add_action( 'woocommerce_after_add_to_cart_button', 'sbw_wc_add_buy_now_button_single' );
 
+
+
 /**
  * Handle "Buy Now" button functionality
  */
 function sbw_wc_handle_buy_now() {
     if ( ! isset( $_REQUEST['sbw-wc-buy-now'] ) ) {
-        return false;
+        return;
     }
 
-    // Clear the cart before adding a new product
+    // Očisti korpu pre dodavanja proizvoda
     WC()->cart->empty_cart();
 
     $product_id = absint( $_REQUEST['sbw-wc-buy-now'] );
-    $quantity   = absint( $_REQUEST['quantity'] );
+    $quantity   = isset( $_REQUEST['quantity'] ) ? absint( $_REQUEST['quantity'] ) : 1;
 
-    if ( isset( $_REQUEST['variation_id'] ) ) {
+    if ( isset( $_REQUEST['variation_id'] ) && $_REQUEST['variation_id'] > 0 ) {
         $variation_id = absint( $_REQUEST['variation_id'] );
-        WC()->cart->add_to_cart( $product_id, 1, $variation_id );
+        WC()->cart->add_to_cart( $product_id, $quantity, $variation_id );
     } else {
         WC()->cart->add_to_cart( $product_id, $quantity );
     }
@@ -389,6 +371,7 @@ function sbw_wc_handle_buy_now() {
     wp_safe_redirect( wc_get_checkout_url() );
     exit;
 }
+
 add_action( 'wp_loaded', 'sbw_wc_handle_buy_now' );
 
 
@@ -422,3 +405,24 @@ function custom_availability_text( $availability, $product ) {
     return $availability;
 }
 
+
+//Promena mesta paginacije, da bude odmah ispod proizvoda, a ne posle teksta.
+
+add_action( 'template_redirect', function() {
+    if ( is_shop() || is_product_category() || is_product_taxonomy() ) {
+        remove_action( 'woocommerce_after_shop_loop', 'woocommerce_pagination', 10 );
+    }
+} );
+
+
+//Funkcija za azuriranje mini korpe
+add_action('wp_ajax_update_header_cart', 'update_header_cart');
+add_action('wp_ajax_nopriv_update_header_cart', 'update_header_cart');
+
+function update_header_cart() {
+    $cart_count = WC()->cart->get_cart_contents_count(); // Dohvati broj proizvoda u korpi
+
+    wp_send_json_success(array(
+        'cart_count' => $cart_count, // Vraća broj proizvoda
+    ));
+}

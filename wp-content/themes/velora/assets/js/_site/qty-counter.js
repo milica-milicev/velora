@@ -4,16 +4,17 @@ const QtyCounter = {
     init: function () {
         console.log('QtyCounter initialized');
 
+        // Klik za povećanje ili smanjenje količine
         document.body.addEventListener('click', function (event) {
             if (event.target.matches('.js-qty-plus, .js-qty-minus')) {
                 const button = event.target;
-                const quantityContainer = button.closest('.cart__product-quantity') || button.closest('.quantity'); // Proveri oba containera
+                const quantityContainer = button.closest('.cart__product-quantity') || button.closest('.quantity');
                 if (!quantityContainer) {
                     console.error('Container za količinu nije pronađen.');
                     return;
                 }
 
-                const input = quantityContainer.querySelector('input.qty'); // Pronalazi input unutar containera
+                const input = quantityContainer.querySelector('input.qty');
                 if (!input) {
                     console.error('Input za količinu nije pronađen.');
                     return;
@@ -34,11 +35,11 @@ const QtyCounter = {
             }
         });
 
-        // Dodaj event listener za "change" događaj (samo za korpu)
+        // Promena input vrednosti količine
         document.body.addEventListener('change', function (event) {
             if (event.target.matches('input.qty')) {
                 const input = event.target;
-                const form = input.closest('form.cart__form'); // Proverava da li je u korpi
+                const form = input.closest('form.cart__form') || input.closest('form'); // Proveri oba formata
                 if (form) {
                     QtyCounter.updateCart(form); // Ažuriranje korpe putem AJAX-a
                 } else {
@@ -48,7 +49,7 @@ const QtyCounter = {
         });
     },
 
-    // Funkcija za slanje AJAX zahteva (koristi se samo na stranici korpe)
+    // Funkcija za ažuriranje korpe putem AJAX-a
     updateCart: async function (form) {
         const formData = new FormData(form);
 
@@ -67,10 +68,19 @@ const QtyCounter = {
                 console.log('Korpa uspešno ažurirana.');
 
                 // Ažuriraj HTML za korpu
-                document.querySelector('div.woocommerce').innerHTML = result.data.cart_html;
+                const cartContainer = document.querySelector('div.woocommerce');
+                if (cartContainer) {
+                    cartContainer.innerHTML = result.data.cart_html;
+                }
 
                 // Ažuriraj ukupne cene
-                document.querySelector('.cart__collaterals').innerHTML = result.data.cart_totals;
+                const cartTotals = document.querySelector('.cart__collaterals');
+                if (cartTotals) {
+                    cartTotals.innerHTML = result.data.cart_totals;
+                }
+
+                // Pozovi funkciju za ažuriranje broja proizvoda u headeru
+                QtyCounter.updateHeaderCount(result.data.cart_count);
             } else {
                 console.error('Greška pri ažuriranju korpe:', result);
             }
@@ -78,10 +88,16 @@ const QtyCounter = {
             console.error('AJAX greška:', error);
         }
     },
+
+    // Funkcija za ažuriranje broja u headeru
+    updateHeaderCount: function (cartCount) {
+        const cartCountElement = document.querySelector('.js-cart-count'); // Selektor za broj u headeru
+        if (cartCountElement) {
+            cartCountElement.textContent = cartCount || '0'; // Postavi broj ili "0" ako je prazan
+        } else {
+            console.error('Element sa klasom .js-cart-count nije pronađen.');
+        }
+    },
 };
 
 export default QtyCounter;
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     QtyCounter.init();
-// });
