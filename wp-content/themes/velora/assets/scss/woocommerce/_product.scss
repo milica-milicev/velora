@@ -196,8 +196,15 @@
 	}
 
 	del {
-		color: $orange;
+		color: #666;
 		margin-right: 5px;
+		@include clamp-font-size(15, 20);
+
+		span {
+			@include clamp-font-size(15, 20);
+			color: #666;
+			font-weight: normal;
+		}
 	}
 
 	ins {
