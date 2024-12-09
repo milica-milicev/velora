@@ -18,8 +18,6 @@ get_header();
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
 		<?php // get content blocks
-			
-			// get_template_part( 'template-views/blocks/new-block/new-block' );
 			get_template_part( 'template-views/blocks/hero/hero' );
 			
 			get_template_part( 'template-views/blocks/categories/categories' );

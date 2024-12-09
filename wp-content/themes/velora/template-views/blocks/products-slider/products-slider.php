@@ -76,6 +76,6 @@
         <div class="product-slider__nav product-slider__nav-next font-chevron-right swiper-button-next-products"></div>
     </div>
     <div class="product-slider__cta">
-        <a href="javascript:;" class="btn">Pogledaj sve proizvode</a>
+        <a href="https://velora.rs/product-category/helanke/" class="btn">Pogledaj sve proizvode</a>
     </div>
 </div>

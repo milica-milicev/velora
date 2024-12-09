@@ -57,9 +57,6 @@
 				</div>
 				<div class="site-header__actions">
 					<ul class="site-header__actions-list">
-						<!-- <li class="site-header__actions-item">
-							<button class="site-header__actions-link site-header__actions-link--search js-search-btn"><span class="font-search"></span></button>
-						</li> -->
 						<li class="site-header__actions-item">
 							<a class="site-header__actions-link cart-contents" href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'Pogledajte vašu korpu' ); ?>">
 								<span class="icon font-cart"></span>

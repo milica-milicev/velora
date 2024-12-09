@@ -89,3 +89,17 @@ html {
     display: flex;
     align-items: center;
 }
+
+.page-content {
+    padding: 100px 0;
+
+    ul {
+        li {
+            padding: 10px 0 5px;
+        }
+    }
+
+    @include mq($md) {
+        padding: 50px 0;
+    }
+}
