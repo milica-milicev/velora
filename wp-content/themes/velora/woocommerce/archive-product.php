@@ -24,12 +24,19 @@ get_header( 'shop' );
     <div class="container">
         <div class="banner__content">
             <?php woocommerce_breadcrumb(); ?>
-            <h1 class="banner__title"><?php woocommerce_page_title(); ?></h1>
-            <?php
-            // Dodavanje podnaslova
+            <?php // Dodavanje podnaslova
             $current_category = get_queried_object(); // Dohvatanje trenutne kategorije
-            if ( $current_category && isset( $current_category->term_id ) ) {
+            ?>
+
+            <?php
+            if ( $current_category ) {
+                $title = get_field( 'category_title', 'product_cat_' . $current_category->term_id ); // Dohvatanje vrednosti ACF polja
                 $subtitle = get_field( 'subcategory_subtitle', 'product_cat_' . $current_category->term_id ); // Dohvatanje vrednosti ACF polja
+                if ( $title ) {
+                    echo '<h1 class="banner__title">' . esc_html( $title ) . '</h1>'; // Prikaz podnaslova
+                } else {
+                    echo '<h1 class="banner__title">' . woocommerce_page_title() . '</h1>'; // Prikaz podnaslova
+                }
                 if ( $subtitle ) {
                     echo '<p class="banner__subtitle">' . esc_html( $subtitle ) . '</p>'; // Prikaz podnaslova
                 }

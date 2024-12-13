@@ -227,12 +227,14 @@
 
 // filter
 .filter {
-    margin-top: 10px;
+    border-radius: 4px;
+    overflow: hidden;
 
     @include mq($md) {
         margin-bottom: 20px;
     }
 }
+
 .filter__title {
     @include clamp-font-size(14, 18);
     line-height: 1.5;
@@ -241,18 +243,26 @@
 }
 
 .filter__item {
-    margin-bottom: 10px;
-    @include clamp-font-size(14, 18);
-    transition: $dur $ease;
+    border-bottom: 1px solid $white;
 
-    @include hover {
-        font-weight: 800;
+    a {
+        padding: 18px 20px;
+        text-transform: uppercase;
+        @include clamp-font-size(14, 16);
+        background-color: $white-smoke;
+        transition: $dur $ease;
+        display: block;
+
+        @include hover {
+            background-color: $light-slate-blue;
+            color: $white;
+        }
     }
 }
 
-.filter__item-active {
-    font-weight: 800;
-    text-decoration: underline;
+.filter__item-active a {
+    background-color: $light-slate-blue;
+    color: $white;
 }
 
 .filter__item-soon {
