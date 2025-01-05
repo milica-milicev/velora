@@ -32,7 +32,11 @@
 
 .banner--sm {
     min-height: 60px;
-    background-color: $light-slate-blue;
+    background-color: $black;
+
+    &::after {
+        content: none;
+    }
 }
 
 .banner__title {

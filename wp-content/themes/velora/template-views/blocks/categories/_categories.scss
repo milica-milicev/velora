@@ -6,11 +6,15 @@
     }
 }
 
+.categories--listing {
+    margin-bottom: 20px;
+}
+
 .categories__row {
     display: flex;
     flex-wrap: wrap;
     margin: 0;
-    grid-gap: 30px;
+    grid-gap: 20px;
 
     .categories--centar & {
         justify-content: center;
@@ -22,7 +26,6 @@
 
     @include mq($md) {
        grid-gap: 10px;
-       margin-bottom: 20px;
     }
 }
 
@@ -52,18 +55,9 @@
         pointer-events: none;
     }
 
-    &:nth-last-child(-n + 2) {
-        margin-bottom: 0;
-    }
-
     @include mq($md + 1, min) {
         flex: 0 0 23%;
         max-width: 23%;
-        margin-bottom: 0;
-
-        .categories--listing & {
-            margin-bottom: 10px;
-        }
     }
 
     // @include mq($lg + 1, min) {

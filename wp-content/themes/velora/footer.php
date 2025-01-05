@@ -22,8 +22,8 @@
 						<li><span>Velora doo</span></li>
 						<li><a href="tel:0603214261">Telefon: 0603214261</a></li>
 						<li><a href="mailto:info@velora.rs">e-mail: info@velora.rs</a></li>
-						<li><span>PIB: 111111234</span></li>
-						<li><span>Matični broj: 14369536</span></li>
+						<li><span>PIB: 114776247</span></li>
+						<li><span>Matični broj: 67846397</span></li>
 					</ul>
 				</div>
 				<div class="site-footer__item">

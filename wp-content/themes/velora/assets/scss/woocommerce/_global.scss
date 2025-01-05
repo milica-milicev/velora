@@ -99,14 +99,24 @@
 .woocommerce-breadcrumb {
 	color: rgba($white, 0.5);
 	margin-bottom: 5px;
+	font-size: 15px;
 
 	a {
 		color: $white;
+	}
+
+	@include mq($md) {
+		font-size: 13px;
 	}
 }
 
 .woocommerce-result-count {
 	font-size: 14px;
+	margin: 10px 0;
+
+	@include mq($md) {
+		display: none;
+	}
 }
 
 .woocommerce-ordering {
@@ -146,6 +156,20 @@
 		background-color: $white;
 		color: $black;
 	}
+
+	@include mq($md) {
+		width: 100%;
+
+		&::before {
+			right: 10px;
+			font-size: 10px;
+		}
+	
+        select {
+			padding: 10px 25px 10px 10px;
+			font-size: 13px;
+		}
+    }
 }
 
 .woocommerce-Price-currencySymbol {

@@ -6,14 +6,12 @@
     }
 }
 
-.products-list__container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    margin: 0 -5px;
-
+.products-list__container { 
     @include mq($md + 1, min) {
         margin: 0 -10px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
     }
 }
 
@@ -42,7 +40,6 @@
 
     .woocommerce-notices-wrapper {
         flex: 1 0 100%;
-        margin-bottom: 10px;
     }
 }
 
@@ -231,7 +228,14 @@
     overflow: hidden;
 
     @include mq($md) {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
+        border-radius: 0;
+
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -5px;
+        }
     }
 }
 
@@ -248,20 +252,36 @@
     a {
         padding: 18px 20px;
         text-transform: uppercase;
-        @include clamp-font-size(14, 16);
+        @include clamp-font-size(12, 16);
         background-color: $white-smoke;
         transition: $dur $ease;
-        display: block;
+        display: flex;
+        align-items: center;
 
         @include hover {
-            background-color: $light-slate-blue;
-            color: $white;
+            background-color: rgba($black, 0.15);
+        }
+    }
+
+    @include mq($md) {
+        padding: 0 5px;
+        margin-bottom: 10px;
+        width: 100%;
+    
+        &:not(:only-child) {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+        
+        a {
+            border-radius: 4px;
+            padding: 15px;
         }
     }
 }
 
 .filter__item-active a {
-    background-color: $light-slate-blue;
+    background-color: $black;
     color: $white;
 }
 
@@ -277,8 +297,8 @@
 
 .filter__item-link--icon .icon {
     display: inline-flex;
-    margin-right: 7px;
-    font-size: 13px;
+    margin-right: 9px;
+    font-size: 10px;
 }
 
 // .woocommerce-Price-amount {
