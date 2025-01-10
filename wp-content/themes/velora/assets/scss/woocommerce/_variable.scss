@@ -39,6 +39,11 @@
         background-color: $white-smoke;
         pointer-events: none;
     }
+
+    @include mq($md) {
+        min-height: 40px;
+        min-width: 40px;
+    }
 }
 
 .woocommerce-variation-add-to-cart {

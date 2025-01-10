@@ -94,6 +94,14 @@
 	}
 }
 
+.single-buy-now-button {
+	@include mq($lg) {
+		width: 100%;
+		margin-top: 15px;
+		margin-right: 0;
+	}
+}
+
 .product__gallery-main-slider,
 .product__gallery-main-img {
 	cursor: zoom-in;

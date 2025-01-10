@@ -24,7 +24,7 @@
     box-sizing: content-box;
     display: flex;
     position: relative;
-    width: 107px;
+    width: 115px;
     border: 1px solid $white-smoke;
 
     @include mq($xl) {
@@ -32,7 +32,7 @@
     }
 
     @include mq($md) {
-        max-height: 34px;
+        max-height: 35px;
         margin-bottom: 10px;
     }
 }
@@ -51,7 +51,7 @@
     cursor: pointer;
     font-size: 18px;
     font-weight: 800;
-    min-width: 30px;
+    min-width: 35px;
     opacity: 0.8;
     padding: 0;
 

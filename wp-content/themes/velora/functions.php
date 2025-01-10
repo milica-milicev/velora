@@ -338,7 +338,7 @@ function sbw_wc_add_buy_now_button_single() {
 
     // Prikaz dugmeta "Kupi odmah" bez dodatnog inputa
     printf(
-        '<button id="sbw-wc-adding-button" type="submit" name="sbw-wc-buy-now" value="%d" class="buy_now_button button alt">%s</button>',
+        '<button id="sbw-wc-adding-button" type="submit" name="sbw-wc-buy-now" value="%d" class="buy_now_button single-buy-now-button button alt">%s</button>',
         $product->get_id(),
         esc_html__( 'Kupi odmah', 'woocommerce' )
     );
