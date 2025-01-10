@@ -23,12 +23,16 @@
 		fill: $white;
 	}
 
-	.main-navigation__menu a {
+	.main-navigation__menu > li > a {
 		color: $white;
 
 		&::after {
 			background-color: $white;
 		}
+	}
+
+	.submenu-icon {
+		color: $white;
 	}
 
 	&.is-sticky {
@@ -38,12 +42,16 @@
 			fill: $black;
 		}
 
-		.main-navigation__menu a {
+		.main-navigation__menu > li > a {
 			color: $black;
 
 			&::after {
 				background-color: $black;
 			}
+		}
+
+		.submenu-icon {
+			color: $black;
 		}
 	}
 
@@ -61,12 +69,16 @@
 				fill: $white;
 			}
 	
-			.main-navigation__menu a {
+			.main-navigation__menu > li > a {
 				color: $white;
 	
 				&::after {
 					background-color: $white;
 				}
+			}
+
+			.submenu-icon {
+				color: $white;
 			}
 
 			.site-header__navigation-toggle-stripe {
@@ -127,6 +139,14 @@
 	.icon {
 		display: inline-flex;
 		color: $black;
+	}
+
+	@include hover {
+		background-color: $light-slate-blue;
+
+		.icon {
+			color: $white;
+		}
 	}
 
 	@include mq($lg) {

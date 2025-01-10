@@ -84,7 +84,7 @@ pre {
 		@include clamp-font-size(14, 16);
 		font-family: $font-main;
 		color: $black;
-		margin-bottom: 25px;
+		margin-bottom: 15px;
 
 		&:last-of-type {
 			margin-bottom: 0;
@@ -175,8 +175,7 @@ pre {
 		text-decoration: underline;
 
 		@include hover {
-			color: $black;
-			text-decoration: underline;
+			color: $orange;
 		}
 	}
 }

@@ -655,19 +655,18 @@ class WC_Email extends WC_Settings_API {
 	 */
 	protected function get_must_use_css_styles(): string {
 		$css = <<<'EOF'
-
-		/*
-		* Temporary measure until e-mail clients more properly support the correct styles.
-		* See https://github.com/woocommerce/woocommerce/pull/47738.
-		*/
-		.screen-reader-text {
-			display: none;
-		}
-
-		EOF;
-
+	/*
+	* Temporary measure until e-mail clients more properly support the correct styles.
+	* See https://github.com/woocommerce/woocommerce/pull/47738.
+	*/
+	.screen-reader-text {
+		display: none;
+	}
+	EOF;
+	
 		return $css;
 	}
+	
 
 	/**
 	 * Return if emogrifier library is supported.

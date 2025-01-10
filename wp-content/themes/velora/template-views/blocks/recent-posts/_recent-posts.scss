@@ -50,7 +50,8 @@
 .recent-posts__nav-arrow {
     width: 60px;
     height: 60px;
-    background-color: $purple-heart;
+    background-color: $light-slate-blue;
+    border: none;
     color: $white;
     border-radius: 50%;
     transition: $dur $ease;
@@ -67,11 +68,11 @@
     margin-right: 10px;
 
     @include hover {
-        transform: scale(1.1);
+        background-color: $black;
     }
 
     &.swiper-button-disabled {
-        background-color: rgba($black, 0.7);
+        opacity: 0;
         pointer-events: none;
     }
 

@@ -19,9 +19,9 @@
 				<div class="site-footer__item">
 					<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.png" alt="">
 					<ul>
-						<li><span>Velora doo</span></li>
-						<li><a href="tel:0603214261">Telefon: 0603214261</a></li>
-						<li><a href="mailto:info@velora.rs">e-mail: info@velora.rs</a></li>
+						<li><span>Mili Shop d.o.o</span></li>
+						<li>Telefon: <a href="tel:0603214261">0603214261</a></li>
+						<li>E-mail: <a href="mailto:info@velora.rs">info@velora.rs</a></li>
 						<li><span>PIB: 114776247</span></li>
 						<li><span>Matični broj: 67846397</span></li>
 					</ul>
@@ -37,13 +37,6 @@
 						)
 					);
 					?>
-					<!-- <ul class="site-footer__item-list">
-						<li><a href="javascript:;">Uputstvo za kupovinu</a></li>
-						<li><a href="javascript:;">Uslovi korišćenja</a></li>
-						<li><a href="javascript:;">Reklamacija</a></li>
-						<li><a href="javascript:;">Blog</a></li>
-						<li><a href="javascript:;">Kontakt</a></li>
-					</ul> -->
 				</div>
 
 				<div class="site-footer__item">

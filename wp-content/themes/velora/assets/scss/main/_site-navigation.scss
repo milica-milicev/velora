@@ -85,7 +85,8 @@ a {
 		transition: transform $dur $ease, opacity $dur $dur $ease, visibility $dur $dur $ease;
 		transform: translateX(-100%);
 		will-change: transform;
-		padding: 120px 20px 0;
+		padding-top: 75px;
+		overflow: auto;
 
 		&.is-active {
 			opacity: 1;
@@ -96,12 +97,17 @@ a {
 	}
 }
 
+.main-navigation__menu-wrap-inner {
+	@include mq($lg) {
+		overflow: auto;
+		width: 100%;
+		height: 100%;
+		padding: 30px 20px 50px;
+	}
+}
+
 .main-navigation__menu {
 	text-align: center;
-
-	ul {
-		display: flex;
-	}
 
 	@include mq($lg + 1, min) {
 		display: flex;
@@ -111,10 +117,24 @@ a {
 }
 
 .main-navigation__menu li {
-	margin-bottom: 25px;
+	margin-bottom: 10px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+
+	@include hover {
+		.sub-menu {
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+		}
+	}
 
 	@include mq($lg + 1, min) {
 		padding-right: 30px;
+		justify-content: flex-start;
 		margin-bottom: 0;
 
 		&:last-of-type {
@@ -127,11 +147,19 @@ a {
 	}
 }
 
+.main-navigation__menu > li {
+	@include mq($lg) {
+		border-bottom: 1px solid rgba($white, 0.3);
+		padding-bottom: 5px;
+	}
+}
+
 .main-navigation__menu a {
 	font-family: $font-main;
 	font-size: 14px;
 	text-transform: uppercase;
 	letter-spacing: 1.2px;
+	padding: 7px 0;
 	line-height: 1.4;
 	color: $black;
 	transition: color $dur $ease;
@@ -139,7 +167,7 @@ a {
 	display: inline-block;
 
 	/* Add an underline animation to the navigation links */
-	&::after {
+	&:not(.has-submenu)::after {
 		content: '';
 		transform: scaleX(0);
 		transform-origin: left;
@@ -148,6 +176,10 @@ a {
 		height: 1px;
 		background-color: $black;
 		transition: transform $dur*1.3 $ease;
+		width: 100%;
+		position: absolute;
+		bottom: 4px;
+		left: 0;
 	}
 
 	@include hover {
@@ -162,7 +194,7 @@ a {
 
 	@include mq($lg) {
 		color: $white;
-		font-size: 14px;
+		font-size: 13px;
 
 		&::after {
 			background-color: $white;
@@ -173,5 +205,46 @@ a {
 .main-navigation__menu li.current-menu-item a {
 	&::after {
 		transform: scaleX(1);
+	}
+}
+
+.sub-menu {
+	display: none;
+	flex: 1 0 100%;
+
+	@include mq($lg + 1, min) {
+		display: block;
+		position: absolute;
+		left: 0;
+		top: 100%;
+		background-color: $white;
+		padding: 15px 20px;
+		width: max-content;
+		border-radius: 4px;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(30px);
+		transition: $dur $ease;
+		will-change: transform;
+		backface-visibility: hidden;
+	}
+}
+
+.submenu-icon {
+	font-size: 13px;
+    width: 35px;
+	height: 35px;
+    display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+
+	&::before {
+		line-height: 1;
+	}
+
+	@include mq($lg) {
+		margin-right: -20px;
+		font-size: 11px;
 	}
 }

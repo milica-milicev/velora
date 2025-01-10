@@ -338,7 +338,7 @@ function sbw_wc_add_buy_now_button_single() {
 
     // Prikaz dugmeta "Kupi odmah" bez dodatnog inputa
     printf(
-        '<button id="sbw-wc-adding-button" type="submit" name="sbw-wc-buy-now" value="%d" class="single_add_to_cart_button buy_now_button button alt">%s</button>',
+        '<button id="sbw-wc-adding-button" type="submit" name="sbw-wc-buy-now" value="%d" class="buy_now_button button alt">%s</button>',
         $product->get_id(),
         esc_html__( 'Kupi odmah', 'woocommerce' )
     );
@@ -426,3 +426,40 @@ function update_header_cart() {
         'cart_count' => $cart_count, // Vraća broj proizvoda
     ));
 }
+
+class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
+    // Start element
+    public function start_el(&$output, $item, $depth = 0, $args = null, $id = 0) {
+        $classes = empty($item->classes) ? [] : (array) $item->classes;
+        $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args, $depth));
+        $class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
+
+        $output .= '<li' . $class_names . '>';
+
+        $attributes = '';
+        !empty($item->attr_title) and $attributes .= ' title="' . esc_attr($item->attr_title) . '"';
+        !empty($item->target) and $attributes .= ' target="' . esc_attr($item->target) . '"';
+        !empty($item->xfn) and $attributes .= ' rel="' . esc_attr($item->xfn) . '"';
+        !empty($item->url) and $attributes .= ' href="' . esc_attr($item->url) . '"';
+
+        // Dodaj klasu na <a> ako stavka menija ima submenu
+        $link_classes = '';
+        if (in_array('menu-item-has-children', $classes)) {
+            $link_classes = ' class="has-submenu"';
+        }
+
+        $link_output = $args->before;
+        $link_output .= '<a' . $attributes . $link_classes . '>';
+        $link_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
+        $link_output .= '</a>';
+
+        // Dodaj span samo ako stavka ima submenu
+        if (in_array('menu-item-has-children', $classes)) {
+            $link_output .= ' <span class="submenu-icon font-chevron-down"></span>';
+        }
+        $link_output .= $args->after;
+
+        $output .= apply_filters('walker_nav_menu_start_el', $link_output, $item, $depth, $args);
+    }
+}
+

@@ -14,3 +14,10 @@ RewriteRule . /velora/index.php [L]
 </IfModule>
 
 # END WordPress
+# BEGIN Speed Optimizer by 10Web
+# Direktive (redovi) između "BEGIN Speed Optimizer by 10Web" i "END Speed Optimizer by 10Web" su dinamički
+# napravljene i trebalo bi da budu izmenjene samo preko Vordpresovih filtera.
+# Svaka izmena direktiva između ovih označivača biće prepisana.
+
+
+# END Speed Optimizer by 10Web

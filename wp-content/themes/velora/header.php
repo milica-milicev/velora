@@ -35,16 +35,19 @@
 		<div class="container">
 			<div class="site-header__container">
 				<nav id="site-navigation" class="main-navigation__menu-wrap js-navigation">
-					<?php
-						wp_nav_menu(
-							array(
-								'theme_location' => 'menu-1',
-								'menu_id'        => 'primary-menu',
-								'menu_class'     => 'main-navigation__menu',
-							)
-						);
-					?>
-				</nav><!-- #site-navigation -->
+					<div class="main-navigation__menu-wrap-inner">
+						<?php
+							wp_nav_menu(
+								array(
+									'theme_location' => 'menu-1',
+									'menu_id'        => 'primary-menu',
+									'menu_class'     => 'main-navigation__menu',
+									'walker'         => new Custom_Walker_Nav_Menu(), // Dodali smo custom walker
+								)
+							);
+						?>
+					</div>
+				</nav>
 				<button type="button" class="site-header__navigation-toggle js-menu-btn">
 					<span class="site-header__navigation-toggle-stripe"></span>
 					<span class="site-header__navigation-toggle-stripe"></span>
