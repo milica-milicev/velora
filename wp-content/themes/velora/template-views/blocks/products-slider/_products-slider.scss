@@ -1,11 +1,11 @@
 .products-slider {
-    padding: 80px 0 80px 80px;
+    padding: 50px 0 50px 80px;
     margin-left: auto;
     max-width: calc(50% + 845px);
     position: relative;
 
     @include mq($xl) {
-        padding: 40px 0 40px 25px;
+        padding: 30px 0 30px 25px;
     }
 }
 

@@ -14,11 +14,12 @@
 	.woocommerce-error {
 		display: flex;
         width: 100%;
-        background-color: rgba($black, 0.4);
+        background-color: rgba($red, 0.3);
         padding: 11px 25px;
         border-radius: 4px;
         flex-wrap: wrap;
         grid-gap: 0 10px;
+		outline: none;
 	}
 
     .woocommerce-message,
@@ -26,10 +27,11 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		background: $white-smoke;
+		background: rgba($light-slate-blue, 0.3);
 		padding: 11px 25px;
 		border-radius: 4px;
 		text-align: center;
+		outline: none;
 
         .button {
             order: 1;

@@ -232,12 +232,11 @@ a {
 
 .submenu-icon {
 	font-size: 13px;
-    width: 35px;
-	height: 35px;
-    display: inline-flex;
+	margin-left: 10px;
+	cursor: pointer;
+	display: flex;
 	align-items: center;
 	justify-content: center;
-	cursor: pointer;
 
 	&::before {
 		line-height: 1;
@@ -245,6 +244,10 @@ a {
 
 	@include mq($lg) {
 		margin-right: -20px;
+		margin-left: 0;
 		font-size: 11px;
+		width: 40px;
+		height: 40px;
+		color: $white;
 	}
 }
