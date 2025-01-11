@@ -75,7 +75,10 @@
         <div class="product-slider__nav product-slider__nav-prev font-chevron-left swiper-button-prev-products"></div>
         <div class="product-slider__nav product-slider__nav-next font-chevron-right swiper-button-next-products"></div>
     </div>
-    <div class="product-slider__cta">
-        <a href="https://velora.rs/product-category/helanke/" class="btn">Pogledaj sve proizvode</a>
-    </div>
+    <?php $cat_page = get_field('category_page'); ?>
+    <?php if ($cat_page) : ?>
+        <div class="product-slider__cta">
+            <a href="<?php echo esc_url( get_term_link( $cat_page ) ); ?>" class="btn">Pogledaj sve proizvode</a>
+        </div>
+    <?php endif; ?>
 </div>

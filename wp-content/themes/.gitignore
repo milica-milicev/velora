@@ -1,8 +1,0 @@
-# ignore ALL files
-style.css
-style.css.map
-style.min.css
-
-# ignore ALL files in ANY directory
-node_modules
-dist

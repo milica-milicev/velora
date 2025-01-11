@@ -463,3 +463,13 @@ class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
     }
 }
 
+/**
+ * Force WooCommerce terms and conditions link to open in a new page when clicked on the checkout page
+ *
+ * @author   Golden Oak Web Design <info@goldenoakwebdesign.com>
+ * @license  https://www.gnu.org/licenses/gpl-2.0.html GPLv2+
+ */
+function remove_woocommerce_checkout_terms_and_conditions_acc() {
+    remove_action( 'woocommerce_checkout_terms_and_conditions', 'wc_terms_and_conditions_page_content', 30 );
+}
+add_action( 'wp', 'remove_woocommerce_checkout_terms_and_conditions_acc' );

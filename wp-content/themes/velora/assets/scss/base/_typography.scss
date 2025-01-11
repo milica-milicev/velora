@@ -9,9 +9,9 @@ optgroup,
 textarea {
 	font-family: $font-main;
 	color: $black;
-	font-size: 16px;
+	@include clamp-font-size(13, 16);
 	line-height: 1.5;
-	letter-spacing: -0.5px;
+	letter-spacing: -0.01em;
 }
 
 pre {

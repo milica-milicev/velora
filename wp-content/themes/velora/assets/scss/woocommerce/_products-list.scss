@@ -257,7 +257,9 @@
         transition: $dur $ease;
         display: flex;
         align-items: center;
+    }
 
+    &:not(.filter__item-active) a {
         @include hover {
             background-color: rgba($black, 0.15);
         }
@@ -283,6 +285,7 @@
 .filter__item-active a {
     background-color: $black;
     color: $white;
+    cursor: default;
 }
 
 .filter__item-soon {

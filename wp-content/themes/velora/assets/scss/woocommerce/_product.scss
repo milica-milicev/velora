@@ -381,12 +381,14 @@
 	}
 }
 
-////Product Pagination
-/// 
-/// 
+// Products Pagination
 .products-pagination {
 	padding: 20px 0 70px;
 	text-align: center;
+
+	@include mq($md) {
+        padding: 20px 0 40px;
+    }
 }
 
 .products-pagination .woocommerce-pagination {
@@ -398,19 +400,30 @@
 
 .products-pagination .woocommerce-pagination li {
 	display: inline;
-	margin: 0 5px;
+	margin: 0 2px;
 }
 
 .products-pagination .woocommerce-pagination a,
 .products-pagination .woocommerce-pagination span {
-	padding: 8px 12px;
+	width: 40px;
+	height: 40px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 	background-color: $white-smoke;
-	border: 1px solid #ddd;
+	border-radius: 4px;
 	text-decoration: none;
-	color: $grey;
+	color: $black;
+	transition: $dur $ease;
+}
+
+.products-pagination .woocommerce-pagination a {
+	@include hover {
+		background-color: rgba($light-slate-blue, 0.3);
+	}
 }
 
 .products-pagination .woocommerce-pagination .current {
-	background-color: $purple-heart;
+	background-color: $light-slate-blue;
 	color: $white;
 }
