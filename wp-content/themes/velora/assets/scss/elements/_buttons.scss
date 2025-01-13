@@ -3,7 +3,7 @@
 --------------------------------------------------------------*/
 .btn,
 .button {
-	@include clamp-font-size(13, 15);
+	@include clamp-font-size(12, 15);
 	font-family: $font-main;
 	background-color: $light-slate-blue;
 	color: $white;
@@ -24,6 +24,11 @@
 
 	@include mq($md) {
 		min-width: 150px;
+		padding: 10px 15px;
+	}
+
+	@include mq($sm) {
+		min-width: 130px;
 	}
 }
 

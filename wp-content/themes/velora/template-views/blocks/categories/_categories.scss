@@ -13,19 +13,14 @@
 .categories__row {
     display: flex;
     flex-wrap: wrap;
-    margin: 0;
-    grid-gap: 20px;
+    margin: 0 -5px;
 
     .categories--centar & {
         justify-content: center;
     }
 
-    // @include mq($lg + 1, min) {
-    //     margin: 0 -10px;
-    // }
-
-    @include mq($md) {
-       grid-gap: 10px;
+    @include mq($lg + 1, min) {
+        margin: 0 -10px;
     }
 }
 
@@ -36,28 +31,21 @@
 }
 
 .categories__item {
-    // margin-bottom: 10px;
-    flex: 0 0 48%;
-    max-width: 48%;
-    padding: 0;
+    margin-bottom: 10px;
+    flex: 0 0 50%;
+    max-width: 50%;
     position: relative;
     overflow: hidden;
     border-radius: 4px;
-
-    &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(180deg, rgba($black, 0) 0%, rgba($black, 0.75) 90%);
-        pointer-events: none;
-    }
+    padding: 0 5px;
 
     @include mq($md + 1, min) {
-        flex: 0 0 23%;
-        max-width: 23%;
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+    }
+
+    @include mq($lg + 1, min) {
+        padding: 0 10px;
     }
 
     // @include mq($lg + 1, min) {
@@ -78,54 +66,75 @@
     display: block;
     background-color: transparent;
 
-    span {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        max-width: 100%;
-        padding: 15px;
-        color: $white;
-        @include clamp-font-size(13, 16);
-        font-weight: 800;
-        text-transform: uppercase;
-        line-height: 1.3;
-        z-index: 2;
-    }
-
-    img {
+    &::after {
+        content: '';
         position: absolute;
         left: 0;
         top: 0;
-        height: 100%;
         width: 100%;
-        object-fit: cover;
-        transition: transform 0.4s ease-in-out; // Dodaj tranziciju za sliku
-        transform: scale(1);
-        will-change: transform;
-        backface-visibility: hidden;
+        height: 100%;
+        background: linear-gradient(180deg, rgba($black, 0) 60%, rgba($black, 0.75) 100%);
+        pointer-events: none;
     }
 
     .categories--listing & {
-        padding-bottom: 70%;
+        padding-bottom: 50%;
     }
+
+    @include mq($md) {
+        .categories--listing & {
+            padding-bottom: 70%;
+        }
+    }
+}
+
+.categories__item-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease-in-out; // Dodaj tranziciju za sliku
+    transform: scale(1);
+    will-change: transform;
+    backface-visibility: hidden;
 
     @include hover {
-        img {
-            transform: scale(1.03); // Zoom-in efekat na slici
-        }
+        transform: scale(1.03); // Zoom-in efekat na slici
+    }
+}
+
+.categories__item-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    max-width: 100%;
+    padding: 20px 10px;
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+
+    .btn {
+        margin-top: 10px;
     }
 
-    @include mq($md + 1, min) {
-        span {
-            padding: 20px;
-        }
-    }
+    @include mq($md) {
+        padding: 10px 5px;
 
-    @include mq($xl + 1, min) {
-        span {
-            padding: 23px;
+        .btn {
+            margin-top: 5px;
         }
     }
+}
+
+.categories__item-name {
+    @include clamp-font-size(15, 25);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.3;
+    color: $white;
+    display: block;
 }
 
 .categories__item--soon {

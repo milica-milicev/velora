@@ -31,8 +31,11 @@
                     ?>
                     <div class="<?php echo esc_attr($class); ?>">
                         <a href="<?php echo esc_url($category_url); ?>">
-                            <img src="<?php echo esc_url($category_image_url); ?>" alt="<?php echo esc_attr($category->name); ?>">
-                            <span><?php echo esc_html($category->name); ?></span>
+                            <img class="categories__item-img" src="<?php echo esc_url($category_image_url); ?>" alt="<?php echo esc_attr($category->name); ?>">
+                            <div class="categories__item-info">
+                                <span class="categories__item-name"><?php echo esc_html($category->name); ?></span>
+                                <span class="btn btn btn--white">Saznajte više</span>
+                            </div>
                         </a>
                     </div>
                     <?php

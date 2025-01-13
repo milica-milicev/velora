@@ -102,6 +102,10 @@
     margin-bottom: 0;
     padding: 14px 20px;
     border-radius: 40px;
+
+    &:invalid {
+        border-color: transparent;
+    }
 }
 
 .subscribe__form-button {

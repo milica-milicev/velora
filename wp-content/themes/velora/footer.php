@@ -19,7 +19,7 @@
 				<div class="site-footer__item">
 					<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.png" alt="">
 					<ul>
-						<li><span>Mili Shop d.o.o</span></li>
+						<li><span>Mili Shop</span></li>
 						<li>Telefon: <a href="tel:0603214261">0603214261</a></li>
 						<li>E-mail: <a href="mailto:info@velora.rs">info@velora.rs</a></li>
 						<li><span>PIB: 114776247</span></li>

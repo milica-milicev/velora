@@ -5,12 +5,12 @@ $banner_box = get_field('banner_box');
 // Check if 'banner_box' field exists and contains data
 if ($banner_box) :
     // Get the product URL if a product is selected
-    $product_url = get_permalink($banner_box['product']->ID); ?>
+    $category_page = $banner_box['category']; ?>
 
     <div class="banner-box">
         <div class="container">
             <!-- Use the product URL as the link for the banner -->
-            <a href="<?php echo esc_url($product_url); ?>" class="banner-box__wrap">
+            <a href="<?php echo esc_url( get_term_link( $category_page ) ); ?>" class="banner-box__wrap">
                 <!-- Use ACF background image if set, otherwise use the default image -->
                 <img class="banner-box__img" src="<?php echo esc_url($banner_box['background_image']['url']); ?>" alt="<?php echo esc_attr($banner_box['background_image']['alt']); ?>">
                 

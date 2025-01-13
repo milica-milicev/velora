@@ -138,8 +138,10 @@ if ( woocommerce_product_loop() ) : ?>
                                         ?>
                                         <div class="categories__item">
                                             <a href="<?php echo esc_url( get_term_link( $subcategory ) ); ?>">
-                                                <img src="<?php echo esc_url( $category_image_url ); ?>" alt="<?php echo esc_attr( $subcategory->name ); ?>">
-                                                <span><?php echo esc_html( $subcategory->name ); ?></span>
+                                                <img class="categories__item-img" src="<?php echo esc_url( $category_image_url ); ?>" alt="<?php echo esc_attr( $subcategory->name ); ?>">
+                                                <div class="categories__item-info">
+                                                    <span class="categories__item-name"><?php echo esc_html( $subcategory->name ); ?></span>
+                                                </div>
                                             </a>
                                         </div>
                                     <?php endforeach; ?>
