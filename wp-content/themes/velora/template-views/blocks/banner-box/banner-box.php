@@ -19,8 +19,9 @@ if ($banner_box) :
                     <h2 class="banner-box__title"><?php echo esc_html($banner_box['title']); ?></h2>
                     
                     <!-- Use the ACF text field -->
-                    <p class="banner-box__text"><?php echo esc_html($banner_box['text']); ?></p>
-                    
+                    <?php if ($banner_box['text']) : ?>
+                        <p class="banner-box__text"><?php echo esc_html($banner_box['text']); ?></p>
+                    <?php endif; ?>
                     <!-- Button will be shown under the product link, or if no product, it defaults -->
                     <span class="btn btn--white">Saznajte više</span>
                 </div>

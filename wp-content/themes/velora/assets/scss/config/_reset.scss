@@ -39,7 +39,7 @@ a:focus, a:hover, a:active { outline: none; }
 ## Typography
 --------------------------------------------------------------*/
 
-abbr[title] { border-bottom: 1px dotted; }
+abbr[title] { border-bottom: none; cursor: inherit; text-decoration: none; color: #ff5700; }
 b, strong { font-weight: bold; }
 blockquote { margin: 0; }
 dfn { font-style: italic; }

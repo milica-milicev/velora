@@ -24,11 +24,11 @@
 
 	@include mq($md) {
 		min-width: 150px;
-		padding: 10px 15px;
+		padding: 9px 14px;
 	}
 
 	@include mq($sm) {
-		min-width: 130px;
+		min-width: 120px;
 	}
 }
 

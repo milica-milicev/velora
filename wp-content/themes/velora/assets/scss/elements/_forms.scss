@@ -8,9 +8,10 @@ label {
     margin-bottom: 4px;
 	position: relative;
 	padding-bottom: 15px;
+	line-height: 1;
 
 	.required {
-		color: $black;
+		color: $orange;
 		display: inline-block;
 	}
 }
@@ -35,9 +36,9 @@ textarea {
     border: 2px solid transparent;
     margin-top: 2px;
     transition: $dur $ease;
-    padding: 11px 16px;
-	background-color: $grey-light;
-	margin-bottom: 15px;
+    padding: 10px 15px;
+	background-color: $white-smoke;
+	margin-bottom: 13px;
 	border-radius: 4px;
 
 	&:focus,
@@ -116,11 +117,11 @@ textarea {
     display: flex;
     flex-direction: column;
 	position: relative;
-    padding-left: 24px;
+    padding-left: 26px;
     padding-bottom: 0;
     margin-bottom: 7px;
     cursor: pointer;
-    font-size: 16px;
+    @include clamp-font-size(13, 16);
     user-select: none;
 	color: $grey;
 	transition: $dur $ease;
@@ -136,13 +137,13 @@ textarea {
 
 .checkbox .checkbox__checkmark {
     position: absolute;
-    top: 1px;
+    top: -3px;
     left: 0;
-    height: 15px;
-    width: 15px;
+    height: 18px;
+    width: 18px;
     background-color: $white;
     border-radius: 3px;
-    border: 1px solid $grey;
+    border: 2px solid $black;
 }
 
 .checkbox input:checked ~ .checkbox__checkmark {
@@ -168,12 +169,11 @@ textarea {
 	line-height: 1;
 
 	a {
-		color: $orange;
 		text-decoration: underline;
 		transition: $dur $ease;
 
 		@include hover {
-			color: $black;
+			color: $light-slate-blue;
 		}
 	}
 }

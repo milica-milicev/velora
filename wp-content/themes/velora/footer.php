@@ -22,8 +22,8 @@
 						<li><span>Mili Shop</span></li>
 						<li>Telefon: <a href="tel:0603214261">0603214261</a></li>
 						<li>E-mail: <a href="mailto:info@velora.rs">info@velora.rs</a></li>
-						<li><span>PIB: 114776247</span></li>
-						<li><span>Matični broj: 67846397</span></li>
+						<li>PIB: <span>114776247</span></li>
+						<li>Matični broj: <span>67846397</span></li>
 					</ul>
 				</div>
 				<div class="site-footer__item">

@@ -74,10 +74,6 @@
 	}
 }
 
-abbr[title] {
-    display: none;
-}
-
 .checkout__order-review {
     border-bottom: 1px solid $white-smoke;
 }
@@ -146,12 +142,11 @@ abbr[title] {
 
 .checkout__privacy {
     a {
-        color: $orange;
         text-decoration: underline;
         transition: $dur $ease;
 
         @include hover {
-            color: $black;
+            color: $light-slate-blue;
         }
     }
 }

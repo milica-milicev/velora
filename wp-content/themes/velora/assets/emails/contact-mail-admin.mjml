@@ -1,0 +1,82 @@
+<mjml>
+  <mj-body background-color="#f1ece6">
+    <mj-section background-color="#ffffff" background-repeat="repeat" padding-bottom="0px" padding-top="30px" padding="20px 0" text-align="center">
+      <mj-column>
+        <mj-image align="center" padding="10px 25px" src="https://velora.rs/wp-content/themes/velora/assets/images/logo.png" target="_blank" width="250px"></mj-image>
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="#ffffff" background-repeat="repeat" background-size="auto" padding-bottom="0px" padding-top="0px" padding="20px 0" text-align="center">
+      <mj-column>
+        <mj-text align="center" color="#19140e" font-size="22px" font-family="OpenSans, Arial, sans-serif" padding-left="0px" padding-right="0px" padding-bottom="0" padding-top="25px">
+          <span style="font-size:22px; font-weight:bold">Detalji iz kontakt forme:</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-wrapper background-color="#ffffff" padding-left="30px" padding-right="30px" padding-top="30px">
+			<mj-section border="2px solid #0d1834;" border-bottom="1px solid #fff" padding="10px">
+				<mj-column>
+					<mj-text font-size="15px" font-family="OpenSans, Arial, sans-serif" color="#19140e" padding="8px">Ime:</mj-text>
+				</mj-column>
+				<mj-column>
+					<mj-text font-size="15px" font-family="OpenSans, Arial, sans-serif" color="#19140e" font-weight="bold" padding="8px">[your-name]</mj-text>
+				</mj-column>
+			</mj-section>
+      <mj-section border="2px solid #0d1834;" border-bottom="1px solid #fff" padding="10px">
+				<mj-column>
+					<mj-text font-size="15px" font-family="OpenSans, Arial, sans-serif" color="#19140e" padding="8px">E-mail:</mj-text>
+				</mj-column>
+				<mj-column>
+					<mj-text font-size="15px" font-family="OpenSans, Arial, sans-serif" color="#19140e" font-weight="bold" padding="8px">[your-email]</mj-text>
+				</mj-column>
+			</mj-section>
+      <mj-section border="2px solid #0d1834;" padding="10px">
+				<mj-column>
+					<mj-text font-size="15px" font-family="OpenSans, Arial, sans-serif" color="#19140e" padding="8px">Poruka:</mj-text>
+				</mj-column>
+				<mj-column>
+					<mj-text font-size="15px" font-family="OpenSans, Arial, sans-serif" color="#19140e" font-weight="bold" padding="8px">[message]</mj-text>
+				</mj-column>
+			</mj-section>
+		</mj-wrapper>
+    <mj-section background-color="#ffffff">
+				<mj-column>
+					<mj-text align="center" font-size="18px" font-family="OpenSans, Arial, sans-serif" color="#19140e">Ovaj email je poslat preko kontakt forme web sajta: <a href="https://velora.rs/" style="font-size:18px; font-family:OpenSans, Arial, sans-serif; font-weight:bold; color:#0d1834;">velora.rs</a></mj-text>
+				</mj-column>
+			</mj-section>
+ <mj-section background-color="#2d2d2d" background-repeat="repeat" padding="20px 0 0" text-align="center">
+      <mj-column>
+        <mj-image width="180px" align="center" padding="10px 15px" src="https://wasserdev.wpenginepowered.com/wp-content/themes/fws-wasser/src/assets/images/logo-white.png" target="_blank"></mj-image>
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="#2d2d2d">
+      <mj-group width="25%">
+        <mj-column>
+          <mj-image alt="Instagram" href="#" width="22px" src="https://velora.rs/wp-content/themes/velora/assets/images/instagram-icon-white.png"></mj-image>
+        </mj-column>
+        <mj-column>
+          <mj-image alt="Facebook" href="#" width="22px" src="https://velora.rs/wp-content/themes/velora/assets/images/facebook-icon-white.png"></mj-image>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-section background-color="#2d2d2d" background-repeat="repeat" padding="0px" text-align="center">
+      <mj-column width="100%">
+        <mj-text align="center" color="#fff" font-size="16px" font-family="OpenSans, Arial, sans-serif" padding-left="0px" padding-right="0" padding-bottom="28px" padding-top="20px">
+          <a href="tel:0603214261" style="font-size:16px; display:block; color:#fff;">Telefon: 060 321 42 61</a>
+          <a href="mailto:info@velora.rs" style="font-size:16px; display:block; padding-top:10px; color:#fff;">Email: info@velora.rs</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+     <mj-section background-color="#2d2d2d" background-repeat="repeat" padding="0px" text-align="center">
+      <mj-column width="100%">
+        <mj-divider border-color="rgba(137, 204, 235, 0.2)" border-width="1px" border-style="solid" padding-left="0" padding-right="0" padding-bottom="0px" padding-top="0"></mj-divider>
+      </mj-column>
+    </mj-section>
+     <mj-section background-color="#2d2d2d" background-repeat="repeat" padding="0px" text-align="center">
+      <mj-column width="100%">
+        <mj-text align="center" color="#fff" font-size="14px" font-family="OpenSans, Arial, sans-serif" padding-left="0px" padding-right="0" padding-bottom="28px" padding-top="20px">
+          <span style="font-size:14px; display:block; color:#fff;">Sva prava zadržana © 2025 Velora</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

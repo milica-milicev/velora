@@ -19,6 +19,7 @@
 .cart__wrap {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
 
     @include mq($md) {
 		display: block;

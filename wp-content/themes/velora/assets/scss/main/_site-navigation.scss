@@ -133,7 +133,7 @@ a {
 	}
 
 	@include mq($lg + 1, min) {
-		padding-right: 30px;
+		padding-right: 20px;
 		justify-content: flex-start;
 		margin-bottom: 0;
 
@@ -142,8 +142,8 @@ a {
 		}
 	}
 
-	@include mq($xl + 1, min) {
-		padding-right: 40px;
+	@include mq($xxl + 1, min) {
+		padding-right: 30px;
 	}
 }
 
@@ -186,6 +186,10 @@ a {
 		&::after {
 			transform: scaleX(1);
 		}
+	}
+
+	@include mq($xxl) {
+		font-size: 13px;
 	}
 
 	@include mq($xl) {
@@ -231,8 +235,8 @@ a {
 }
 
 .submenu-icon {
-	font-size: 13px;
-	margin-left: 10px;
+	font-size: 11px;
+	margin-left: 6px;
 	cursor: pointer;
 	display: flex;
 	align-items: center;
@@ -245,7 +249,6 @@ a {
 	@include mq($lg) {
 		margin-right: -20px;
 		margin-left: 0;
-		font-size: 11px;
 		width: 40px;
 		height: 40px;
 		color: $white;

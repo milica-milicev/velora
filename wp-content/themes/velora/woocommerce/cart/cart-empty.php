@@ -52,11 +52,13 @@ if ( wc_get_page_id( 'shop' ) > 0 ) : ?>
 							<div class="categories__item">
 								<a href="<?php echo esc_url( $category_link ); ?>">
 									<?php if ( $category_image_url ) : ?>
-										<img src="<?php echo esc_url( $category_image_url ); ?>" alt="<?php echo esc_attr( $category->name ); ?>">
+										<img class="categories__item-img" src="<?php echo esc_url( $category_image_url ); ?>" alt="<?php echo esc_attr( $category->name ); ?>">
 									<?php else : ?>
-										<img src="<?php echo esc_url( get_template_directory_uri() . '/images/default-category.jpg' ); ?>" alt="<?php echo esc_attr( $category->name ); ?>"> <!-- Rezervna slika -->
+										<img class="categories__item-img" src="<?php echo esc_url( get_template_directory_uri() . '/images/default-category.jpg' ); ?>" alt="<?php echo esc_attr( $category->name ); ?>"> <!-- Rezervna slika -->
 									<?php endif; ?>
-									<span><?php echo esc_html( $category->name ); ?></span>
+									<div class="categories__item-info">
+										<span class="categories__item-name"><?php echo esc_html( $category->name ); ?></span>
+									</div>
 								</a>
 							</div>
 						<?php endif;

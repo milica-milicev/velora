@@ -126,6 +126,12 @@
             margin-top: 5px;
         }
     }
+
+    @include mq($xs) {
+        .btn {
+            display: none;
+        }
+    }
 }
 
 .categories__item-name {

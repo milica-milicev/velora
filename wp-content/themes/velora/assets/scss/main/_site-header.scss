@@ -114,9 +114,11 @@
 	fill: $black;
 	transition: $dur $ease;
 
-	@include mq($lg) {
+	@include mq($xxl) {
 		max-width: 130px;
+	}
 
+	@include mq($lg) {
 		.is-active-header & {
 			fill: $white;
 		}
