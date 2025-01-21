@@ -5,7 +5,7 @@
 .button {
 	@include clamp-font-size(12, 15);
 	font-family: $font-main;
-	background-color: $light-slate-blue;
+	background-color: $black;
 	color: $white;
 	padding: 15px 20px;
 	transition: $dur $ease;
@@ -14,17 +14,16 @@
 	min-width: 180px;
 	text-align: center;
 	display: inline-block;
-	border: 2px solid $light-slate-blue;
-	border-radius: 30px;
+	border: 2px solid $black;
 
 	@include hover {
 		background-color: rgba($white, 0.85);
-		color: $light-slate-blue;
+		color: $black;
 	}
 
 	@include mq($md) {
 		min-width: 150px;
-		padding: 9px 14px;
+		padding: 11px 14px;
 	}
 
 	@include mq($sm) {

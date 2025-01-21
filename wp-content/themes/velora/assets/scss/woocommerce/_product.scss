@@ -42,7 +42,6 @@
 	top: 10px;
 	left: 20px;
 	padding: 5px 12px;
-	border-radius: 4px;
 	color: $white;
 	font-weight: bold;
 	font-size: 12px;
@@ -76,11 +75,13 @@
 }
 
 .single_add_to_cart_button {
-	background-color: $black;
+	background-color: $white;
 	border: 2px solid $black;
+	color: $black;
 
 	@include hover {
-		color: $black;
+		background-color: $black;
+		color: $white;
 	}
 
 	@include mq($xl) {
@@ -117,7 +118,6 @@
         width: 100%;
 		object-fit: contain;
     	object-position: center;
-		border-radius: 4px;
     	overflow: hidden;
     }
 }
@@ -411,7 +411,6 @@
 	align-items: center;
 	justify-content: center;
 	background-color: $white-smoke;
-	border-radius: 4px;
 	text-decoration: none;
 	color: $black;
 	transition: $dur $ease;
@@ -419,11 +418,11 @@
 
 .products-pagination .woocommerce-pagination a {
 	@include hover {
-		background-color: rgba($light-slate-blue, 0.3);
+		background-color: rgba($black, 0.2);
 	}
 }
 
 .products-pagination .woocommerce-pagination .current {
-	background-color: $light-slate-blue;
+	background-color: $black;
 	color: $white;
 }

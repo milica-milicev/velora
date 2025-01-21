@@ -29,6 +29,7 @@
     max-width: 1680px;
     padding: 0 80px;
     left: 0;
+    pointer-events: none;
 
     @include mq($xl) {
         padding: 0 25px;
@@ -56,6 +57,7 @@
     will-change: transform;
     backface-visibility: hidden;
     box-shadow: 0 2px 8px rgba($black, 0.2);
+    pointer-events: auto;
 
     @include hover {
         transform: scale(1.1);

@@ -1,7 +1,7 @@
 <div class="categories">
     <div class="container">
         <div class="categories__header">
-            <h2 class="section-title categories__title">Kategorije</h2>
+            <h2 class="section-title categories__title">Naše kategorije</h2>
         </div>
         <div class="categories__row">
             <?php

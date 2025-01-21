@@ -50,7 +50,7 @@
 .recent-posts__nav-arrow {
     width: 60px;
     height: 60px;
-    background-color: $light-slate-blue;
+    background-color: $black;
     border: none;
     color: $white;
     border-radius: 50%;
@@ -68,7 +68,8 @@
     margin-right: 10px;
 
     @include hover {
-        background-color: $black;
+        background-color: $white;
+        color: $black;
     }
 
     &.swiper-button-disabled {

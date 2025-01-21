@@ -8,6 +8,7 @@
     min-height: 280px;
     background-color: $black;
     position: relative;
+    padding: 40px 0;
 
     &::after {
         content: '';
@@ -33,6 +34,7 @@
 .banner--sm {
     min-height: 60px;
     background-color: $black;
+    padding: 0;
 
     &::after {
         content: none;
@@ -62,6 +64,10 @@
     max-width: 1000px;
     margin: 40px auto;
 
+    @include mq($lg) {
+        margin: 30px auto;
+    }
+
     @include mq($md) {
         margin: 20px auto;
         text-align: left;
@@ -69,9 +75,9 @@
 }
 
 .banner-single-conten__title {
-    @include clamp-font-size(32, 48);
+    @include clamp-font-size(32, 46);
     margin-bottom: 20px;
-    font-weight: 600;
+    font-weight: 800;
     line-height: 1.18;
 
     @include mq($md) {
@@ -84,17 +90,11 @@
 
     img {
         max-height: 800px;
-        width: 100%;
-        object-fit: cover;
+        margin: 0 auto;
     }
 
     @include mq($md) {
        margin-bottom: 30px;
-
-       img {
-            min-height: 261px;
-            object-fit: cover;
-       }
     }
 }
 

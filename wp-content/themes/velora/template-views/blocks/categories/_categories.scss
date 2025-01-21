@@ -36,7 +36,6 @@
     max-width: 50%;
     position: relative;
     overflow: hidden;
-    border-radius: 4px;
     padding: 0 5px;
 
     @include mq($md + 1, min) {
@@ -61,7 +60,6 @@
     position: relative;
     overflow: hidden;
     transition: transform 0.4s ease-in-out; // Glađa tranzicija za celokupan item
-    border-radius: 4px;
     padding-bottom: 125%;
     display: block;
     background-color: transparent;

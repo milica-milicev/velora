@@ -9,7 +9,7 @@
 <div class="recent-posts">
     <div class="container">
         <div class="recent-posts__head">
-            <h2 class="recent-posts__head-title section-title">Blog postovi</h2>
+            <h2 class="recent-posts__head-title section-title">Saveti za Aktivni Stil</h2>
         </div>
         <div class="recent-posts__wrapper">
             <div class="js-swiper-blog swiper">
@@ -46,7 +46,7 @@
                 <div class="recent-posts__nav-arrow recent-posts__nav-next font-chevron-right swiper-button-next-posts"></div>
             </div>
             <div class="recent-posts__cta">
-                <a href="javascript:;" class="btn">Pogledaj sve</a>
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>blog" class="btn">Pogledaj sve</a>
             </div>
         </div>
     </div>

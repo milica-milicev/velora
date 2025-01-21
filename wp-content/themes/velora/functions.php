@@ -473,3 +473,82 @@ function remove_woocommerce_checkout_terms_and_conditions_acc() {
     remove_action( 'woocommerce_checkout_terms_and_conditions', 'wc_terms_and_conditions_page_content', 30 );
 }
 add_action( 'wp', 'remove_woocommerce_checkout_terms_and_conditions_acc' );
+
+add_action('woocommerce_cart_calculate_fees', 'apply_discount_for_fitness_combos', 10, 1);
+
+function apply_discount_for_fitness_combos($cart) {
+    if (is_admin() && !defined('DOING_AJAX')) {
+        return;
+    }
+
+    // Postavi kategorije proizvoda za helanke i topove
+    $leggings_category = 'helanke'; // Slug kategorije helanki
+    $tops_category = 'topovi';     // Slug kategorije topova
+    $discount_percentage = 10;    // Popust u procentima
+
+    $leggings_count = 0;
+    $tops_count = 0;
+
+    // Prođi kroz proizvode u korpi i izbroj helanke i topove
+    foreach ($cart->get_cart() as $cart_item) {
+        $product = $cart_item['data'];
+        $quantity = $cart_item['quantity'];
+
+        // Dobij roditeljski proizvod za varijaciju, ako je primenljivo
+        $parent_id = $product->get_parent_id();
+        $parent_product = $parent_id ? wc_get_product($parent_id) : $product;
+
+        if (has_term($leggings_category, 'product_cat', $parent_product->get_id())) {
+            $leggings_count += $quantity;
+        }
+
+        if (has_term($tops_category, 'product_cat', $parent_product->get_id())) {
+            $tops_count += $quantity;
+        }
+    }
+
+    // Izračunaj koliko kompleta je moguće formirati
+    $eligible_combos = min($leggings_count, $tops_count);
+
+    if ($eligible_combos > 0) {
+        // Izračunaj vrednost popusta za sve setove
+        $discount = 0;
+
+        foreach ($cart->get_cart() as $cart_item) {
+            $product = $cart_item['data'];
+            $quantity = $cart_item['quantity'];
+            $price = $product->get_price();
+
+            // Dobij roditeljski proizvod za varijaciju, ako je primenljivo
+            $parent_id = $product->get_parent_id();
+            $parent_product = $parent_id ? wc_get_product($parent_id) : $product;
+
+            // Pronađi koliko proizvoda može biti deo kompleta
+            if (has_term($leggings_category, 'product_cat', $parent_product->get_id())) {
+                $leggings_to_discount = min($quantity, $eligible_combos); // Maksimalno dostupne helanke za popust
+                $discount += $leggings_to_discount * ($price * ($discount_percentage / 100));
+            }
+
+            if (has_term($tops_category, 'product_cat', $parent_product->get_id())) {
+                $tops_to_discount = min($quantity, $eligible_combos); // Maksimalno dostupni topovi za popust
+                $discount += $tops_to_discount * ($price * ($discount_percentage / 100));
+            }
+        }
+
+        // Smanji broj kompleta na kraju
+        $eligible_combos -= min($leggings_to_discount, $tops_to_discount);
+
+        if ($discount > 0) {
+            // Dodaj popust u korpu
+            $cart->add_fee(__('Popust 10% na set', 'woocommerce'), -$discount);
+        }
+    }
+}
+
+
+
+
+
+
+
+

@@ -39,22 +39,40 @@
     flex-basis: 100%;
     text-align: center;
 
-    span {
-        font-weight: 800;
-    }
-
-    span,
-    a {
-        margin: 0 5px;
-        text-transform: uppercase;
-        font-size: 13px;
-        letter-spacing: 1.1px;
+    .page-numbers {
+        width: 40px;
+        height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $white-smoke;
+        text-decoration: none;
+        color: $black;
         transition: $dur $ease;
+        margin: 0 2px;
+
+        &.prev,
+        &.next {
+            width: auto;
+            height: auto;
+            background-color: transparent;
+            color: $black;
+
+            @include hover {
+                background-color: transparent;
+                opacity: 0.8;
+            }
+        } 
     }
 
-    a {
+    a.page-numbers {
         @include hover {
-            color: rgba($black, 0.8);
+            background-color: rgba($black, 0.2);
         }
+    }
+
+    .current {
+        background-color: $black;
+        color: $white;
     }
 }

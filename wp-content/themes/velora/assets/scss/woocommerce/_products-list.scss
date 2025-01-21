@@ -81,7 +81,6 @@
     height: auto;
     overflow: hidden;
     padding-bottom: 145%;
-    border-radius: 4px;
     display: block;
 
     .product-item__hover-img {
@@ -142,7 +141,6 @@
     width: calc(100% - 30px);
     background: $white;
     padding: 10px;
-    border-radius: 4px;
     text-align: center;
     text-transform: uppercase;
     font-size: 14px;
@@ -166,7 +164,6 @@
     position: absolute;
     top: -2px;
     left: -2px;
-    border-radius: 4px;
 	opacity: 0;
 	visibility: hidden;
 	pointer-events: none;
@@ -224,7 +221,6 @@
 
 // filter
 .filter {
-    border-radius: 4px;
     overflow: hidden;
 
     @include mq($md) {
@@ -276,7 +272,6 @@
         }
         
         a {
-            border-radius: 4px;
             padding: 15px;
         }
     }
